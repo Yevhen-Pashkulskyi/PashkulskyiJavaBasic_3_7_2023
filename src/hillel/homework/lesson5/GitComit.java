@@ -1,0 +1,7 @@
+package hillel.homework.lesson5;
+
+public class GitComit {
+    public static void main(String[] args) {
+        System.out.println("my first commit");
+    }
+}
