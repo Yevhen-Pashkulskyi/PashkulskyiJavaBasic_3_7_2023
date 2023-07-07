@@ -1,0 +1,18 @@
+#Intellij IDEA
+.idea
+*.iml
+out/
+scrinshot/
+lesson1/
+lesson2/
+lesson3/
+lesson4/
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+/src/hillel/homework/lesson6/
