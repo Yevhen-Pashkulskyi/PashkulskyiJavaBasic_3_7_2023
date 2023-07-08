@@ -45,17 +45,13 @@ public class RugbyGame {
     }
 
     public static int[] averageAge(int[] averAgeTeam) {
-        int averageAge = 0;
+        int sumAverageAge = 0;
         for (int i = 0; i < averAgeTeam.length; i++) {
-            if (i == averAgeTeam.length - 1) {
-                averageAge += averAgeTeam[i];
-                averageAge = averageAge / averAgeTeam.length;
-                System.out.println(averageAge);
-            } else {
-                averageAge += averAgeTeam[i];
-            }
+            sumAverageAge += averAgeTeam[i];
         }
-        return new int[]{averageAge};
+        sumAverageAge = sumAverageAge / averAgeTeam.length;
+
+        return new int[]{sumAverageAge};
     }
 
 }
