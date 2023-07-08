@@ -7,43 +7,32 @@ public class RugbyGame {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int players = 25;//scanner.nextInt();//25
-        int lowAge = 18;//scanner.nextInt();//18
-        int highAge = 40;//scanner.nextInt();//40
+        int players = scanner.nextInt(); //25
+        int lowAge = scanner.nextInt(); //18
+        int highAge = scanner.nextInt(); //40
 
+
+        System.out.println("First team age list : ");
         int[] firstTeam = randomAgeTeam(players, lowAge, highAge);
-//        System.out.println();
-//        averageAge(firstTeam);
-        int averageAge1 = 0;
-        for (int i = 0; i < firstTeam.length; i++) {
-            if (i == firstTeam.length - 1) {
-                averageAge1 += firstTeam[i];
-                averageAge1 = averageAge1 / players;
-                System.out.println(averageAge1);
-            } else {
-                averageAge1 += firstTeam[i];
-            }
-        }
 
-        int[] secondTeam = randomAgeTeam(players, lowAge, highAge);
         System.out.println();
-//        averageAge(secondTeam);
-//        System.out.println("average 2");
-        int averageAge2 = 0;
-        for (int i = 0; i < secondTeam.length; i++) {
-            if (i == secondTeam.length - 1) {
-                averageAge2 += secondTeam[i];
-                averageAge2 = averageAge2 / players;
-                System.out.println(averageAge2);
-            } else {
-                averageAge2 += secondTeam[i];
-            }
-        }
+
+        System.out.print("Average age first team : ");
+        averageAge(firstTeam);
+
+        System.out.println();
+        System.out.println("Second team age list : ");
+        int[] secondTeam = randomAgeTeam(players, lowAge, highAge);
+
+        System.out.println();
+
+        System.out.print("Average age second team : ");
+        averageAge(secondTeam);
+
     }
 
     public static int[] randomAgeTeam(int players, int lowAge, int highAge) {
         int[] arrayAge = new int[players];
-//        int sum = 0;
         for (int i = 0; i < arrayAge.length; i++) {
             int randomAge = ThreadLocalRandom.current().nextInt(lowAge, highAge);//вивод рандомного чісла
             arrayAge[i] = randomAge; //здесь счетчік ставіт індекс масіва і прісваевает рандомное чісло к єтому індексу
@@ -51,14 +40,19 @@ public class RugbyGame {
         }
         return arrayAge;
     }
-   /* public static void averageAge(int[] averAgeTeam) {
-        int players = 25;//scanner.nextInt();//25
-        int lowAge = 18;//scanner.nextInt();//18
-        int highAge = 40;//scanner.nextInt();//40
 
-        int sumAverage = 0;
-        averAgeTeam = randomAgeTeam(players, lowAge, highAge);
-
-    }*/
+    public static int[] averageAge(int[] averAgeTeam) {
+        int averageAge = 0;
+        for (int i = 0; i < averAgeTeam.length; i++) {
+            if (i == averAgeTeam.length - 1) {
+                averageAge += averAgeTeam[i];
+                averageAge = averageAge / averAgeTeam.length;
+                System.out.println(averageAge);
+            } else {
+                averageAge += averAgeTeam[i];
+            }
+        }
+        return new int[]{averageAge};
+    }
 
 }
