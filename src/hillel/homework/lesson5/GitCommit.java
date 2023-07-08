@@ -6,5 +6,6 @@ public class GitCommit {
         System.out.println("second commit");
         System.out.println("3");
         System.out.println("new name branch");
+        System.out.println();
     }
 }
