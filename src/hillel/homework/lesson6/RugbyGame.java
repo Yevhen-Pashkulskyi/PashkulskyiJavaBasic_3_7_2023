@@ -7,8 +7,11 @@ public class RugbyGame {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        System.out.println("Enter the number of players : ");
         int players = scanner.nextInt(); //25
+        System.out.println("Enter minimum age : ");
         int lowAge = scanner.nextInt(); //18
+        System.out.println("Enter maximum age : ");
         int highAge = scanner.nextInt(); //40
 
 
