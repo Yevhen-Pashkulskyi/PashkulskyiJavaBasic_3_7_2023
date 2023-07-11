@@ -17,36 +17,38 @@ public class MatrixTransposition {
         int columns = scanner.nextInt(); //вертікальний массів єто колічество данних (размер) масіва
 //        int[] result = new int[] matrixArray(columns);
 //        print(matrixColumns(columns));
-        printDubArray(matrixArray(matrixColumns(columns), lines));
+        printDubArray(matrixArray(columns, lines));
 
     }
 
-    public static int[] matrixColumns(int columns) {
+//    public static int[] matrixColumns(int columns) {
+//        int minRandom = 0;
+//        int maxRandom = 10;
+//        int[] array = new int[columns];
+//
+//        for (int j = 0; j < array.length; j++) {
+//            int random = ThreadLocalRandom.current().nextInt(minRandom, maxRandom);
+//            array[j] = random;
+//        }
+//        return array;
+//    }
+
+    public static int[][] matrixArray(int columns, int lines) {
         int minRandom = 0;
         int maxRandom = 10;
         int[] array = new int[columns];
+        int[][] arrayAll = new int[columns][lines];
 
-        for (int j = 0; j < array.length; j++) {
-            int random = ThreadLocalRandom.current().nextInt(minRandom, maxRandom);
-            array[j] = random;
-        }
-        return array;
-    }
-
-    public static int[][] matrixArray(int[] array, int lines) {
-        int[][] arrayAll = new int[lines][];
         for (int i = 0; i < lines; i++) {
-            arrayAll[i] = array;
-//            System.out.println(arrayAll);
+
+            for (int j = 0; j < columns; j++) {
+                int random = ThreadLocalRandom.current().nextInt(minRandom, maxRandom);
+                arrayAll[i][j] = random;
+            }
+
+//            arrayAll[i] = array[j];
         }
         return arrayAll;
-    }
-
-    public static void print(int[] array) {
-        for (int arrayPrint : array) {
-            System.out.print(" " + arrayPrint);
-        }
-
     }
 
     public static void printDubArray(int[][] array) {
@@ -58,4 +60,10 @@ public class MatrixTransposition {
             System.out.println();
         }
     }
+//    public static void print(int[] array) {
+//        for (int arrayPrint : array) {
+//            System.out.print(" " + arrayPrint);
+//        }
+//
+//    }
 }
