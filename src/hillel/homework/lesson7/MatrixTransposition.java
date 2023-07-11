@@ -13,11 +13,13 @@ public class MatrixTransposition {
 
     public static void main(String[] args) {
 
-        int lines = scanner.nextInt();
-        int columns = scanner.nextInt(); //вертікальний массів єто колічество данних (размер) масіва
+        int lines = 2;//scanner.nextInt();
+        int columns = 3;//scanner.nextInt(); //вертікальний массів єто колічество данних (размер) масіва
 //        int[] result = new int[] matrixArray(columns);
 //        print(matrixColumns(columns));
         print(matrixArray(lines, columns));
+        System.out.println();
+        printDubArray(matrixArray(lines, columns));
 
     }
 
@@ -36,7 +38,7 @@ public class MatrixTransposition {
     public static int[][] matrixArray(int lines, int columns) {
         int minRandom = 0;
         int maxRandom = 10;
-        int[] array = new int[columns];
+
         int[][] arrayAll = new int[lines][columns];
 
         for (int i = 0; i < lines; i++) {
@@ -45,8 +47,6 @@ public class MatrixTransposition {
                 int random = ThreadLocalRandom.current().nextInt(minRandom, maxRandom);
                 arrayAll[i][j] = random;
             }
-
-//            arrayAll[i] = array[j];
         }
         return arrayAll;
     }
@@ -61,10 +61,23 @@ public class MatrixTransposition {
         }
     }
 
-    public static void print(int[][] array) {
-        for (int[] arrayPrint : array) {
-            System.out.print(" " + arrayPrint);
+    //    public static void print(int[][] array) {
+//        for (int[] arrayPrint : array) {
+//            System.out.print(" " + arrayPrint);
+//        }
+//
+//    }
+    private static void print(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            if (matrix[i] == null) {
+                System.out.println();
+                continue;
+            }
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
         }
-
     }
 }
+
