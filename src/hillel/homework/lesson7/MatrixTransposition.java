@@ -1,7 +1,5 @@
 package hillel.homework.lesson7;
 
-import com.sun.org.apache.xml.internal.resolver.readers.SAXCatalogParser;
-
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -18,30 +16,30 @@ public class MatrixTransposition {
         int lines = scanner.nextInt();
         int columns = scanner.nextInt(); //вертікальний массів єто колічество данних (размер) масіва
 //        int[] result = new int[] matrixArray(columns);
-        print(matrixColumns(columns));
+//        print(matrixColumns(columns));
+        printDubArray(matrixArray(matrixColumns(columns), lines));
+
     }
 
     public static int[] matrixColumns(int columns) {
-
         int minRandom = 0;
         int maxRandom = 10;
         int[] array = new int[columns];
 
-
-        for (int cloumns = 0; cloumns < array.length; cloumns++) {
+        for (int j = 0; j < array.length; j++) {
             int random = ThreadLocalRandom.current().nextInt(minRandom, maxRandom);
-            array[cloumns] = random;
+            array[j] = random;
         }
-
         return array;
     }
 
     public static int[][] matrixArray(int[] array, int lines) {
         int[][] arrayAll = new int[lines][];
         for (int i = 0; i < lines; i++) {
-            arrayAll[i][print(matrixColumns())] =
+            arrayAll[i] = array;
+//            System.out.println(arrayAll);
         }
-
+        return arrayAll;
     }
 
     public static void print(int[] array) {
