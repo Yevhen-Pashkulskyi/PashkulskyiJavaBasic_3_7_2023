@@ -8,7 +8,7 @@ public class MatrixTransposition {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println("Введіть значення M та N через пробіл або через клавішу Enter :");
+        System.out.println("Введіть значення M та N через пробіл або через клавішу Enter:");
         int lines = scanner.nextInt();
         int columns = scanner.nextInt(); //вертікальний массів єто колічество данних (размер) масіва
         int[][] result = matrixArray(lines, columns);
