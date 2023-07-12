@@ -8,57 +8,47 @@ public class MatrixTransposition {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-
+        System.out.println("Введіть значення M та N через пробіл :");
         int lines = scanner.nextInt();
         int columns = scanner.nextInt(); //вертікальний массів єто колічество данних (размер) масіва
         int[][] result = matrixArray(lines, columns);
+        System.out.println("Original matrix :");
         print(result);
         System.out.println();
-        print(transpored(result, lines, columns));
+        System.out.println("The matrix is transposed :");
+        print(transposition(result, lines, columns));
     }
 
     public static int[][] matrixArray(int lines, int columns) {
         int minRandom = 0;
         int maxRandom = 10;
 
-        int[][] arrayAll = new int[lines][columns];
+        int[][] matrix = new int[lines][columns];
 
-        for (int i = 0; i < arrayAll.length; i++) {
+        for (int i = 0; i < matrix.length; i++) {
 
-            for (int j = 0; j < arrayAll[i].length; j++) {
+            for (int j = 0; j < matrix[i].length; j++) {
                 int random = ThreadLocalRandom.current().nextInt(minRandom, maxRandom);
-                arrayAll[i][j] = random;
+                matrix[i][j] = random;
             }
         }
-        return arrayAll;
+        return matrix;
     }
 
-    public static int[][] transpored(int[][] array, int lines, int columns) {
-        int[][] newMatrix = new int[columns][lines];
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                newMatrix[j][i] = array[i][j];
+    public static int[][] transposition(int[][] matrix, int lines, int columns) {
+        int[][] transpositionMatrix = new int[columns][lines];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                transpositionMatrix[j][i] = matrix[i][j];
             }
         }
-        return newMatrix;
+        return transpositionMatrix;
     }
 
-//    public static void printDubArray(int[][] array) {
-//        // TODO: 12.07.2023 пеевернуть массів сделать трансосед і так что б еслі по вертікале есть пустие то і запісивалі в горізантал так же
-//        // TODO: 12.07.2023 попробовать с іпользованіем сравнені я массівов
-//        for (int i = 0; i < array.length; i++) {
-//
-//            for (int j = 0; j < array[i].length; j++) {
-//                System.out.print(array[j][i] + " ");
-//            }
-//            System.out.println();
-//        }
-//    }
-
-    private static void print(int[][] array) {
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                System.out.print(array[i][j] + " ");
+    private static void print(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + " ");
             }
             System.out.println();
         }
