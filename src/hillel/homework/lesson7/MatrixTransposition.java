@@ -16,7 +16,7 @@ public class MatrixTransposition {
         print(result);
         System.out.println();
         System.out.println("The matrix is transposed :");
-        print(transposition(result, lines, columns));
+        print(transpose(result, lines, columns));
     }
 
     public static int[][] matrixArray(int lines, int columns) {
@@ -35,7 +35,7 @@ public class MatrixTransposition {
         return matrix;
     }
 
-    public static int[][] transposition(int[][] matrix, int lines, int columns) {
+    public static int[][] transpose(int[][] matrix, int lines, int columns) {
         int[][] transpositionMatrix = new int[columns][lines];
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
