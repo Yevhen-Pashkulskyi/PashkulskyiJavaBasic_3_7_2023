@@ -9,13 +9,12 @@ public class MatrixTransposition {
 
     public static void main(String[] args) {
 
-        int lines = 3;//scanner.nextInt();
-        int columns = 2;//scanner.nextInt(); //вертікальний массів єто колічество данних (размер) масіва
+        int lines = scanner.nextInt();
+        int columns = scanner.nextInt(); //вертікальний массів єто колічество данних (размер) масіва
         int[][] result = matrixArray(lines, columns);
         print(result);
         System.out.println();
-        printDubArray(result);
-
+        print(transpored(result, lines, columns));
     }
 
     public static int[][] matrixArray(int lines, int columns) {
@@ -34,26 +33,32 @@ public class MatrixTransposition {
         return arrayAll;
     }
 
-    public static void printDubArray(int[][] array) {
-        // TODO: 12.07.2023 пеевернуть массів сделать трансосед і так что б еслі по вертікале есть пустие то і запісивалі в горізантал так же
-        // TODO: 12.07.2023 попробовать с іпользованіем сравнені я массівов
+    public static int[][] transpored(int[][] array, int lines, int columns) {
+        int[][] newMatrix = new int[columns][lines];
         for (int i = 0; i < array.length; i++) {
-
             for (int j = 0; j < array[i].length; j++) {
-                System.out.print(array[j][i] + " ");
+                newMatrix[j][i] = array[i][j];
             }
-            System.out.println();
         }
+        return newMatrix;
     }
 
-    private static void print(int[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-//            if (matrix[i] == null) {
-//                System.out.println();
-//                continue;
+//    public static void printDubArray(int[][] array) {
+//        // TODO: 12.07.2023 пеевернуть массів сделать трансосед і так что б еслі по вертікале есть пустие то і запісивалі в горізантал так же
+//        // TODO: 12.07.2023 попробовать с іпользованіем сравнені я массівов
+//        for (int i = 0; i < array.length; i++) {
+//
+//            for (int j = 0; j < array[i].length; j++) {
+//                System.out.print(array[j][i] + " ");
 //            }
-            for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j] + " ");
+//            System.out.println();
+//        }
+//    }
+
+    private static void print(int[][] array) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                System.out.print(array[i][j] + " ");
             }
             System.out.println();
         }
