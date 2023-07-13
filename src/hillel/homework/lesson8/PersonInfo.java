@@ -36,6 +36,7 @@ public class PersonInfo {
     }
 
     public PersonInfo(String firstName, String surname, String city) {
+
         this.firstName = " Will ";
         this.surname = " Smith ";
         this.city = " New York ";
@@ -56,3 +57,9 @@ public class PersonInfo {
         phoneNumber = " 37742123513";
     }
 }
+//class Jeckie extends PersonInfo{
+//
+//    public Jeckie(String firstName) {
+//        super(firstName);
+//    }
+//}
