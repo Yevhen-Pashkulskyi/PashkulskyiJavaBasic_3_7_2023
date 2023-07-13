@@ -11,13 +11,15 @@ public class SteppedArrays {
     public static void main(String[] args) {
         System.out.println("Введіть значення N та M через пробіл або через клавішу Enter:");
         int lines = scanner.nextInt();
-        int countElements = scanner.nextInt();
+        int countElements = maxRandom;
         int[][] result = matrixArray(lines, countElements);
-        System.out.println("Original matrix :");
-        print(result);
-        System.out.println();
-        System.out.println("The matrix is transposed :");
-        print(transpose(result, lines, countElements));
+//        System.out.println("Original matrix :");
+//        print(result);
+//        System.out.println();
+//        System.out.println("The matrix is transposed :");
+//        print(transpose(result, lines, countElements));
+
+
     }
 
     public static int[][] matrixArray(int lines, int columns) {
@@ -33,16 +35,16 @@ public class SteppedArrays {
         }
         return matrix;
     }
-
-    public static int[][] transpose(int[][] matrix, int lines, int columns) {
-        int[][] transpositionMatrix = new int[columns][lines];
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                transpositionMatrix[j][i] = matrix[i][j];
-            }
-        }
-        return transpositionMatrix;
-    }
+//
+//    public static int[][] transpose(int[][] matrix, int lines, int columns) {
+//        int[][] transpositionMatrix = new int[columns][lines];
+//        for (int i = 0; i < matrix.length; i++) {
+//            for (int j = 0; j < matrix[i].length; j++) {
+//                transpositionMatrix[j][i] = matrix[i][j];
+//            }
+//        }
+//        return transpositionMatrix;
+//    }
 
     private static void print(int[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
