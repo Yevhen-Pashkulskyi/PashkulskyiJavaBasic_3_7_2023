@@ -13,12 +13,6 @@ public class SteppedArrays {
         int lines = scanner.nextInt();
         int countElements = maxRandom;
         int[][] result = matrixArray(lines, countElements);
-//        System.out.println("Original matrix :");
-//        print(result);
-//        System.out.println();
-//        System.out.println("The matrix is transposed :");
-//        print(transpose(result, lines, countElements));
-
 
     }
 
