@@ -22,11 +22,12 @@ public class SteppedArrays {
         int[][] matrix = new int[lines][columns];
         for (int i = 0; i < matrix.length; i++) {
 
+            matrix[i] = new int[random(minRandom, maxRandom)];
+
             for (int j = 0; j < matrix[i].length; j++) {
                 int numberRandom = random(minRandom, maxRandom);
                 matrix[i][j] = numberRandom;
             }
-            matrix[i] = new int[random(minRandom, maxRandom)];
 
         }
 
