@@ -5,13 +5,16 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class SteppedArrays {
     static Scanner scanner = new Scanner(System.in);
-    private static int lines = 5;//scanner.nextInt();
-    private static int maxCountElements = 9;//scanner.nextInt();
+    private static int lines = 7;
+    private static int maxCountElements = 9;
     private static int minRandom = 0;
     private static int maxRandom = maxCountElements;
 
 
     public static void main(String[] args) {
+//        System.out.println("Введіть значення M та N через пробіл або через клавішу Enter:");
+//        lines = scanner.nextInt();
+//        maxCountElements = scanner.nextInt();
 
         int[][] result = array(lines, random(minRandom, maxRandom));
         print(result);
@@ -22,7 +25,7 @@ public class SteppedArrays {
         int[][] matrix = new int[lines][columns];
         for (int i = 0; i < matrix.length; i++) {
 
-            matrix[i] = new int[random(minRandom, maxRandom)];
+            matrix[i] = new int[random(minRandom + 1, maxRandom)];
 
             for (int j = 0; j < matrix[i].length; j++) {
                 int numberRandom = random(minRandom, maxRandom);
