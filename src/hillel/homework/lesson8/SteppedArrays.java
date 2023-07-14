@@ -5,42 +5,38 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class SteppedArrays {
     static Scanner scanner = new Scanner(System.in);
+    private static int lines = 5;//scanner.nextInt();
+    private static int maxCountElements = 9;//scanner.nextInt();
     private static int minRandom = 0;
-    private static int maxRandom;
+    private static int maxRandom = maxCountElements;
+
 
     public static void main(String[] args) {
-        System.out.println("Введіть значення N та M через пробіл або через клавішу Enter:");
-        int lines = scanner.nextInt();
-        int countElements = scanner.nextInt();
-        maxRandom = countElements;
-        int[][] result = matrixArray(lines, countElements);
-        print(result);
 
+        int[][] result = array(lines, random(minRandom, maxRandom));
+        print(result);
     }
 
-    public static int[][] matrixArray(int lines, int columns) {
+    public static int[][] array(int lines, int columns) {
 
         int[][] matrix = new int[lines][columns];
-
         for (int i = 0; i < matrix.length; i++) {
 
             for (int j = 0; j < matrix[i].length; j++) {
-                int random = ThreadLocalRandom.current().nextInt(minRandom, maxRandom);
-                matrix[i][j] = random;
+                int numberRandom = random(minRandom, maxRandom);
+                matrix[i][j] = numberRandom;
             }
+            matrix[i] = new int[random(minRandom, maxRandom)];
+
         }
+
         return matrix;
     }
-//
-//    public static int[][] transpose(int[][] matrix, int lines, int columns) {
-//        int[][] transpositionMatrix = new int[columns][lines];
-//        for (int i = 0; i < matrix.length; i++) {
-//            for (int j = 0; j < matrix[i].length; j++) {
-//                transpositionMatrix[j][i] = matrix[i][j];
-//            }
-//        }
-//        return transpositionMatrix;
-//    }
+
+    public static int random(int minRandom, int maxRandom) {
+        int random = ThreadLocalRandom.current().nextInt(minRandom, maxRandom);
+        return random;
+    }
 
     private static void print(int[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
