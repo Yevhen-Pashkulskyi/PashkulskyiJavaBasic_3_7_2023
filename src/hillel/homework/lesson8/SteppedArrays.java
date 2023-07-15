@@ -17,7 +17,16 @@ public class SteppedArrays {
 //        maxCountElements = scanner.nextInt();
         int[][] dataArray = new int[lines][random(minRandom, maxRandom)];
         int[][] result = array(dataArray);
+        System.out.println("array");
         print(result);
+
+        System.out.println("sort : ");
+        sortElements(result);// нужно будет убрать , єто лішній массів
+//        print(sort);
+        System.out.println("revers : ");
+        reversSortElement(result);// нужно будет убрать , єто лішній массів
+//        print(revers);
+
     }
 
     public static int[][] array(int[][] dataArray) {
@@ -36,17 +45,68 @@ public class SteppedArrays {
         return dataArray;
     }
 
+    public static int[][] syncReverse(int[][] array) {
+        for (int i = 0; i < array.length; i++) {
+            if (array.length % 2 = 0) {
+
+            }
+        }
+        return array;
+    }
+
     public static int random(int minRandom, int maxRandom) {
         int random = ThreadLocalRandom.current().nextInt(minRandom, maxRandom);
         return random;
     }
 
-    private static void print(int[][] matrix) {
+    public static void print(int[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 System.out.print(matrix[i][j] + " ");
             }
             System.out.println();
         }
+    }
+
+    public static void /*int[][]*/ sortElements(int[][] array) {
+        boolean swapped;
+        do {
+            swapped = false;
+            for (int i = 0; i < array.length; i++) {
+
+                int steps = array[i].length - 1;
+
+                for (int j = 0; j < steps; j++) {
+                    if (array[i][j] > array[i][j + 1]) {
+                        int temp = array[i][j];
+                        array[i][j] = array[i][j + 1];
+                        array[i][j + 1] = temp;
+                        swapped = true;
+                    }
+                }
+            }
+        } while (swapped);
+//        return array;
+    }
+
+    public static void /*int[][]*/ reversSortElement(int[][] array) {
+        boolean swapped;
+        do {
+            swapped = false;
+            for (int i = 0; i < array.length; i++) {
+
+                int steps = array[i].length - 1;
+
+                for (int j = 0; j < steps; j++) {
+                    if (array[i][j] < array[i][j + 1]) {
+                        int temp = array[i][j];
+                        array[i][j] = array[i][j + 1];
+                        array[i][j + 1] = temp;
+                        swapped = true;
+                    }
+                }
+            }
+        } while (swapped);
+//        return array;
     }
 }
