@@ -15,26 +15,25 @@ public class SteppedArrays {
 //        System.out.println("Введіть значення M та N через пробіл або через клавішу Enter:");
 //        lines = scanner.nextInt();
 //        maxCountElements = scanner.nextInt();
-
-        int[][] result = array(lines, random(minRandom, maxRandom));
+        int[][] dataArray = new int[lines][random(minRandom, maxRandom)];
+        int[][] result = array(dataArray);
         print(result);
     }
 
-    public static int[][] array(int lines, int columns) {
+    public static int[][] array(int[][] dataArray) {
 
-        int[][] matrix = new int[lines][columns];
-        for (int i = 0; i < matrix.length; i++) {
+        for (int i = 0; i < dataArray.length; i++) {
 
-            matrix[i] = new int[random(minRandom + 1, maxRandom)];
+            dataArray[i] = new int[random(minRandom + 1, maxRandom)];
 
-            for (int j = 0; j < matrix[i].length; j++) {
+            for (int j = 0; j < dataArray[i].length; j++) {
                 int numberRandom = random(minRandom, maxRandom);
-                matrix[i][j] = numberRandom;
+                dataArray[i][j] = numberRandom;
             }
 
         }
 
-        return matrix;
+        return dataArray;
     }
 
     public static int random(int minRandom, int maxRandom) {
