@@ -1,5 +1,6 @@
 package hillel.homework.lesson8;
 
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -20,8 +21,12 @@ public class SteppedArrays {
         System.out.println("array");
         print(array);
 
-        System.out.println("sort : ");
+        System.out.println();
+
+        System.out.println("Sync sort : ");
         print(syncSortElements(array));
+
+        System.out.println();
 
         System.out.println("Total sum elements : " + sumElements(array));
 //        System.out.println("revers : ");
@@ -33,7 +38,7 @@ public class SteppedArrays {
 
     }
 
-    // метод создает массів
+    // Метод создает массів
     public static int[][] array(int[][] dataArray) {
 
         for (int i = 0; i < dataArray.length; i++) {
@@ -50,44 +55,11 @@ public class SteppedArrays {
         return dataArray;
     }
 
-    //
-//    public static int[][] syncSortReverse(int[][] array) {
-//       int [][] syncArray  ;
-//
-//        for (int i = 0; i < array.length; i++) {
-//
-//            if (i % 2 == 0) {
-//                i
-//            } else {
-//               array = reversSortElement(array);
-//            }
-//        }
-//        return syncArray;
-//    }
-
-
-    //метод создает рандомное чісло в діапозоне мін і макс
-    public static int random(int minRandom, int maxRandom) {
-        int random = ThreadLocalRandom.current().nextInt(minRandom, maxRandom);
-        return random;
-    }
-
-
-    //меттод виводіт массіви
-    public static void print(int[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
-
-
+    // Метод сортирує парні рядки за зростанням та непарні за спаданням
     public static int[][] syncSortElements(int[][] array) {
         for (int i = 0; i < array.length; i++) {
             if (i % 2 == 0) {
-                // Сортировка четной строки по возрастанию (сортировка выбором)
+                // Сортування парної строки за зростанням (сортування вибором)
                 for (int j = 0; j < array[i].length - 1; j++) {
                     int minIndex = j;
                     for (int k = j + 1; k < array[i].length; k++) {
@@ -115,17 +87,46 @@ public class SteppedArrays {
         return array;
     }
 
-    // метод сумує всі елементи
+    // Метод сумує всі елементи
     private static int sumElements(int[][] array) {
+
         int sum = 0;
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 sum += array[i][j];
             }
         }
-        sum = sum * array.length;
         return sum;
     }
+
+    //Метод знаходе мштшмальне значення
+//    public static int[] minAllElements(int[][] array) {
+//        int[] minElements;
+//        int min;
+//        for (int i = 0; i < array.length; i++) {
+//            for (int j =0;j < array[i].length ; j++) {
+//
+//            }
+//        }
+//        return minElements;
+//    }
+
+    //Метод створює рандомне число в діапозоне мін і макс
+    public static int random(int minRandom, int maxRandom) {
+        int random = ThreadLocalRandom.current().nextInt(minRandom, maxRandom);
+        return random;
+    }
+
+    //Метод разпичатує масиви
+    public static void print(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
 
 //    //метод сортирует строку по возростанию
 //    public static int[][] sortElements(int[][] array) {
@@ -174,5 +175,19 @@ public class SteppedArrays {
 //        return array;
 //    }
 
+    //
+//    public static int[][] syncSortReverse(int[][] array) {
+//       int [][] syncArray  ;
+//
+//        for (int i = 0; i < array.length; i++) {
+//
+//            if (i % 2 == 0) {
+//                i
+//            } else {
+//               array = reversSortElement(array);
+//            }
+//        }
+//        return syncArray;
+//    }
 
 }
