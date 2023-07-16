@@ -21,8 +21,9 @@ public class SteppedArrays {
         print(array);
 
         System.out.println("sort : ");
-//        syncSortElements(array);// нужно будет убрать , єто лішній массів
         print(syncSortElements(array));
+
+        System.out.println("Total sum elements : " + sumElements(array));
 //        System.out.println("revers : ");
 //        reversSortElement(array);// нужно будет убрать , єто лішній массів
 //        print(revers);
@@ -114,13 +115,15 @@ public class SteppedArrays {
         return array;
     }
 
+    // метод сумує всі елементи
     private static int sumElements(int[][] array) {
         int sum = 0;
-        for (; ; ) {
-            for (; ; ) {
-
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                sum += array[i][j];
             }
         }
+        sum = sum * array.length;
         return sum;
     }
 
@@ -131,7 +134,7 @@ public class SteppedArrays {
 //            swapped = false;
 //            for (int i = 0; i < array.length; i = i + 2) {
 //
-//                if (i % 2 == 1) {
+//                if (i % 2 !== 0) {
 //                    continue;
 //                } else {
 //                    for (int j = 0; j < array[i].length - 1; j++) {
