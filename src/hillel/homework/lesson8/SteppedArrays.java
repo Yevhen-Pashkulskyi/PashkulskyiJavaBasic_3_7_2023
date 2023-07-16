@@ -1,6 +1,5 @@
 package hillel.homework.lesson8;
 
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -19,16 +18,21 @@ public class SteppedArrays {
         int[][] dataArray = new int[lines][random(minRandom, maxRandom)];
         int[][] array = array(dataArray);
         System.out.println("array");
-        print(array);
+        printDoubleArray(array);
 
         System.out.println();
 
         System.out.println("Sync sort : ");
-        print(syncSortElements(array));
+        printDoubleArray(syncSortElements(array));
 
         System.out.println();
 
         System.out.println("Total sum elements : " + sumElements(array));
+
+        System.out.println();
+
+        System.out.println("Min elements:");
+        printArray(minAllElements(array));
 //        System.out.println("revers : ");
 //        reversSortElement(array);// нужно будет убрать , єто лішній массів
 //        print(revers);
@@ -100,16 +104,20 @@ public class SteppedArrays {
     }
 
     //Метод знаходе мштшмальне значення
-//    public static int[] minAllElements(int[][] array) {
-//        int[] minElements;
-//        int min;
-//        for (int i = 0; i < array.length; i++) {
-//            for (int j =0;j < array[i].length ; j++) {
-//
-//            }
-//        }
-//        return minElements;
-//    }
+    public static int[] minAllElements(int[][] array) {
+        int[] minElements = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            int min = Integer.MAX_VALUE;//array[0][0];
+
+            for (int j = 0; j < array[i].length; j++) {
+                if (array[i][j] < min) {
+                    min = array[i][j];
+                }
+            }
+            minElements[i] = min;
+        }
+        return minElements;
+    }
 
     //Метод створює рандомне число в діапозоне мін і макс
     public static int random(int minRandom, int maxRandom) {
@@ -117,13 +125,20 @@ public class SteppedArrays {
         return random;
     }
 
-    //Метод разпичатує масиви
-    public static void print(int[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j] + " ");
+    //Метод разпичатує двумірні масиви
+    public static void printDoubleArray(int[][] array) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                System.out.print(array[i][j] + " ");
             }
             System.out.println();
+        }
+    }
+
+    //Метод розпічатує одномірні масиви
+    public static void printArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
         }
     }
 
