@@ -8,19 +8,7 @@ public class Burgers {
     private String greens;
     private String mayonnaise;
 
-    public void classicBurger() {
-        System.out.println("Класичний бургер");
-        System.out.println("Склад: " + bun + ", " + meat + ", " + cheese + ", " + greens + ", " + mayonnaise);
-    }
-
-    public void dietBurger() {
-        System.out.println("Дієтичний бургер");
-        System.out.println("Склад: " + bun + ", " + meat + ", " + cheese + ", " + greens);
-    }
-
-    public void doubleBurger() {
-        System.out.println("Double бургер");
-        System.out.println("Склад: " + bun + ", " + quantity + "-" + meat + ", " + cheese + ", " + greens + ", " + mayonnaise);
+    public void burger() {
     }
 
     public Burgers(String bun, String meat, String cheese, String greens, String mayonnaise) {
@@ -29,6 +17,9 @@ public class Burgers {
         this.cheese = cheese;
         this.greens = greens;
         this.mayonnaise = mayonnaise;
+
+        System.out.println("Класичний бургер");
+        System.out.println("Склад: " + bun + ", " + meat + ", " + cheese + ", " + greens + ", " + mayonnaise);
     }
 
     public Burgers(String bun, String meat, String cheese, String greens) {
@@ -36,6 +27,9 @@ public class Burgers {
         this.meat = meat;
         this.cheese = cheese;
         this.greens = greens;
+
+        System.out.println("Дієтичний бургер");
+        System.out.println("Склад: " + bun + ", " + meat + ", " + cheese + ", " + greens);
     }
 
     public Burgers(String bun, int quantity, String meat, String cheese, String greens, String mayonnaise) {
@@ -45,18 +39,22 @@ public class Burgers {
         this.cheese = cheese;
         this.greens = greens;
         this.mayonnaise = mayonnaise;
+
+        System.out.println("Double бургер");
+        System.out.println("Склад: " + bun + ", " + quantity + "-" + meat + ", " + cheese + ", " + greens + ", " + mayonnaise);
+
     }
 }
 
 class BurgerMain {
     public static void main(String[] args) {
         Burgers classicBurger = new Burgers("булочка", "м'ясо", "сир", "зелень", "майонез");
-        classicBurger.classicBurger();
+        classicBurger.burger();
 
         Burgers dietBurger = new Burgers("булочка", "м'ясо", "сир", "зелень");
-        dietBurger.dietBurger();
+        dietBurger.burger();
 
         Burgers doubleBurger = new Burgers("булочка", 2, "м'яса", "сир", "зелень", "майонез");
-        doubleBurger.doubleBurger();
+        doubleBurger.burger();
     }
 }
