@@ -17,22 +17,26 @@ public class SteppedArrays {
 //        maxCountElements = scanner.nextInt();
         int[][] dataArray = new int[lines][random(minRandom, maxRandom)];
         int[][] array = array(dataArray);
+
         System.out.println("array");
         printDoubleArray(array);
 
         System.out.println();
-
         System.out.println("Sync sort : ");
         printDoubleArray(syncSortElements(array));
 
         System.out.println();
-
         System.out.println("Total sum elements : " + sumElements(array));
 
         System.out.println();
-
-        System.out.println("Min elements:");
+        System.out.println("Min with array elements:");
         printArray(minAllElements(array));
+
+        System.out.println();
+        System.out.println("Min elements: " + minNumber(minAllElements(array)));
+
+        System.out.println();
+        divideResult(array, minNumber(minAllElements(array)));
 //        System.out.println("revers : ");
 //        reversSortElement(array);// нужно будет убрать , єто лішній массів
 //        print(revers);
@@ -103,11 +107,12 @@ public class SteppedArrays {
         return sum;
     }
 
-    //Метод знаходе мштшмальне значення
+    //Метод знаходе мінімальне значення в кожній строчці двумірного масива та виводе його масивом одномірним
     public static int[] minAllElements(int[][] array) {
         int[] minElements = new int[array.length];
         for (int i = 0; i < array.length; i++) {
-            int min = Integer.MAX_VALUE;//array[0][0];
+
+            int min = Integer.MAX_VALUE; //array[0][0];
 
             for (int j = 0; j < array[i].length; j++) {
                 if (array[i][j] < min) {
@@ -117,6 +122,47 @@ public class SteppedArrays {
             minElements[i] = min;
         }
         return minElements;
+    }
+
+    //Метод знаходе мінімальне значення в масиві
+
+    public static int minNumber(int[] array) {
+        int min = array[0];
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < min) {
+                min = array[i];
+            }
+        }
+        return min;
+    }
+
+    //Метод поділяє всш елементи двумірного масива на мінімальне значення
+    public static void divideResult(int[][] array, int min) {
+//        int []divide = new int[array.length];
+
+        int result = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (min == 00) {
+                System.out.println("NaN на  0  поділяти не можна");
+                break;
+            } else {
+                for (int j = 0; j < array[i].length; j++) {
+                    result = array[i][j] / min;
+                    System.out.println("String " + i + array[i][j] + "/" + min + " = " + result);
+                }
+            }
+//            for (int j = 0; j < array[i].length; j++) {
+//                if (min == 0) {
+//                    System.out.println("NaN на  0  поділяти не можна");
+//                    break;
+//                }else {
+//                    result = array[i][j] / min;
+//                    System.out.println("String " + i + array[i][j] + "/"+ min + " = " + result);
+//                }
+//            }
+//            divide[i] = min;
+        }
+//        return divide;
     }
 
     //Метод створює рандомне число в діапозоне мін і макс
