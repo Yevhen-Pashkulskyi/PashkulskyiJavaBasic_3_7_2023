@@ -8,9 +8,6 @@ public class Burgers {
     private String greens;
     private String mayonnaise;
 
-    public void burger() {
-    }
-
     public Burgers(String bun, String meat, String cheese, String greens, String mayonnaise) {
         this.bun = bun;
         this.meat = meat;
@@ -49,12 +46,10 @@ public class Burgers {
 class BurgerMain {
     public static void main(String[] args) {
         Burgers classicBurger = new Burgers("булочка", "м'ясо", "сир", "зелень", "майонез");
-        classicBurger.burger();
 
         Burgers dietBurger = new Burgers("булочка", "м'ясо", "сир", "зелень");
-        dietBurger.burger();
 
         Burgers doubleBurger = new Burgers("булочка", 2, "м'яса", "сир", "зелень", "майонез");
-        doubleBurger.burger();
+
     }
 }
