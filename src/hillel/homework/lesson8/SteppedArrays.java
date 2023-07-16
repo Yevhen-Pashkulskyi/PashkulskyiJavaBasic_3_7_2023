@@ -6,7 +6,6 @@ import java.util.concurrent.ThreadLocalRandom;
 public class SteppedArrays {
     static Scanner scanner = new Scanner(System.in);
     private static int lines = scanner.nextInt();
-    ;
     private static int maxCountElements = scanner.nextInt();
     private static int minRandom = 0;
     private static int maxRandom = maxCountElements;
