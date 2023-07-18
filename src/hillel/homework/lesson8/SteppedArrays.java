@@ -1,5 +1,6 @@
 package hillel.homework.lesson8;
 
+import javax.print.attribute.standard.DateTimeAtCompleted;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
@@ -38,7 +39,8 @@ public class SteppedArrays {
         System.out.println("Min elements: " + minNumber(minAllElements(array)));
 
         System.out.println();
-        divideResult(array, minNumber(minAllElements(array)));
+        System.out.println("Divide result ");
+        printDoubleArray(divideResult(array, minNumber(minAllElements(array))));
     }
 
     private SteppedArrays(int lines, int maxCountElements) {
@@ -80,10 +82,12 @@ public class SteppedArrays {
         return sum;
     }
 
-    //Метод знаходе мінімальне значення в кожній строчці двумірного масива та виводе його масивом одномірним
+    //Метод знаходе мінімальне значення в кожній строчці двумірного масива та провіряє є масив порожнім виводе його масивом одномірним
     public static int[] minAllElements(int[][] array) {
-        int[] minElements = new int[array.length];// TODO: 18.07.2023 виправити якщо массив буде пустий
-
+        if (array == null || array.length == 0) {
+            return new int[0];
+        }
+        int[] minElements = new int[array.length];//
         for (int i = 0; i < array.length; i++) {
             int min = Integer.MAX_VALUE;
 
@@ -95,11 +99,13 @@ public class SteppedArrays {
         return minElements;
     }
 
-    //Метод знаходе мінімальне значення в масиві
+    //Метод знаходе мінімальне значення в масиві та проверяє є масив порожнім
     public static int minNumber(int[] array) {
+        if (array == null || array.length == 0) {
+            throw new IllegalArgumentException("Передан порожній масив");
+        }
         int min = array[0];
-
-        for (int i = 0; i < array.length; i++) {// TODO: 18.07.2023 якщо масив буде пустим
+        for (int i = 0; i < array.length; i++) {
             if (array[i] < min) {
                 min = array[i];
             }
@@ -107,21 +113,23 @@ public class SteppedArrays {
         return min;
     }
 
-    //Метод поділяє всш елементи двумірного масива на мінімальне значення
-    public static void divideResult(int[][] array, int min) {
-        int result;
-        int element = 0;
-        if (min == 0 | array == null) { // тут мабуть зробив double pressing та не побачив "00"
-            System.out.println("Error на 0 поділяти не можна");
-        } else {
+    //Метод поділяє всш елементи двумірного масива на мінімальне значення якщо можливо , якщо ни выдаэ значення -1
+    public static int[][] divideResult(int[][] array, int min) {
+        if (min != 0 & array != null) {
             for (int i = 0; i < array.length; i++) {
                 for (int j = 0; j < array[i].length; j++) {
-                    result = array[i][j] / min;
-                    element++;
-                    System.out.println("Element " + element + "  " + array[i][j] + "/" + min + " = " + result);
+                    array[i][j] /= min;
                 }
-            }// TODO: 18.07.2023 виводити масивом через метод прінт
+            }
+        } else {
+            int[][] errorArray = new int[array.length][];
+            for (int i = 0; i < array.length; i++) {
+                errorArray[i] = new int[array[i].length];
+                Arrays.fill(errorArray[i], -1);
+            }
+            array = errorArray;
         }
+        return array;
     }
 
     //Метод сортує парні строки з зростанням
