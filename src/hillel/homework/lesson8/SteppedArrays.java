@@ -1,20 +1,27 @@
 package hillel.homework.lesson8;
 
+import javax.print.attribute.standard.DateTimeAtCompleted;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class SteppedArrays {
     static Scanner scanner = new Scanner(System.in);
-    private static int lines = scanner.nextInt();
-    private static int maxCountElements = scanner.nextInt();
-    private static int minRandom = 0;
-    private static int maxRandom = maxCountElements;
+    private final int lines;
+    private final int maxCountElements;
+    private static final int minRandom = 0;
+    private static int maxRandom;
 
     public static void main(String[] args) {
-        int[][] dataArray = new int[lines][random(minRandom, maxRandom)];
-        int[][] array = array(dataArray);
 
-        System.out.println("array");
+        System.out.println("Введіть через пробіл або через клавішу enter кількість строк та стовпчики ");
+        int lines = scanner.nextInt();
+        int maxCountElements = scanner.nextInt();
+
+        SteppedArrays value = new SteppedArrays(lines, maxCountElements);
+
+        int[][] array = creationArray(lines);
+        System.out.println("Array original");
         printDoubleArray(array);
 
         System.out.println();
@@ -32,54 +39,34 @@ public class SteppedArrays {
         System.out.println("Min elements: " + minNumber(minAllElements(array)));
 
         System.out.println();
-        divideResult(array, minNumber(minAllElements(array)));
+        System.out.println("Divide result ");
+        printDoubleArray(divideResult(array, minNumber(minAllElements(array))));
+    }
+
+    private SteppedArrays(int lines, int maxCountElements) {
+        this.lines = lines;
+        this.maxCountElements = maxCountElements;
+        this.maxRandom = maxCountElements;
     }
 
     // Метод создает массів
-    public static int[][] array(int[][] dataArray) {
-        for (int i = 0; i < dataArray.length; i++) {
-            dataArray[i] = new int[random(minRandom + 1, maxRandom)];
+    public static int[][] creationArray(int lines) {
+        int[][] array = new int[lines][];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = new int[random(minRandom + 1, maxRandom)];
 
-            for (int j = 0; j < dataArray[i].length; j++) {
+            for (int j = 0; j < array[i].length; j++) {
                 int numberRandom = random(minRandom, maxRandom);
-                dataArray[i][j] = numberRandom;
+                array[i][j] = numberRandom;
             }
         }
-        return dataArray;
+        return array;
     }
 
     // Метод сортирує парні рядки за зростанням та непарні за спаданням
     public static int[][] syncSortElements(int[][] array) {
-        for (int i = 0; i < array.length; i++) {
-            if (i % 2 == 0) {
-                // Сортування парної строки за зростанням (сортування вибором)
-                for (int j = 0; j < array[i].length - 1; j++) {
-                    int minIndex = j;
-
-                    for (int k = j + 1; k < array[i].length; k++) {
-                        if (array[i][k] < array[i][minIndex]) {
-                            minIndex = k;
-                        }
-                    }
-
-                    int temp = array[i][j];
-                    array[i][j] = array[i][minIndex];
-                    array[i][minIndex] = temp;
-                }
-            } else {
-                // Сортування непарної строки з спадання (сортування бульбашковим методом)
-                for (int j = 0; j < array[i].length - 1; j++) {
-
-                    for (int k = 0; k < array[i].length - j - 1; k++) {
-                        if (array[i][k] < array[i][k + 1]) {
-                            int temp = array[i][k];
-                            array[i][k] = array[i][k + 1];
-                            array[i][k + 1] = temp;
-                        }
-                    }
-                }
-            }
-        }
+        sortEvenRows(array);
+        sortOddRows(array);
         return array;
     }
 
@@ -95,27 +82,29 @@ public class SteppedArrays {
         return sum;
     }
 
-    //Метод знаходе мінімальне значення в кожній строчці двумірного масива та виводе його масивом одномірним
+    //Метод знаходе мінімальне значення в кожній строчці двумірного масива та провіряє є масив порожнім виводе його масивом одномірним
     public static int[] minAllElements(int[][] array) {
-        int[] minElements = new int[array.length];
-
+        if (array == null || array.length == 0) {
+            return new int[0];
+        }
+        int[] minElements = new int[array.length];//
         for (int i = 0; i < array.length; i++) {
             int min = Integer.MAX_VALUE;
 
             for (int j = 0; j < array[i].length; j++) {
-                if (array[i][j] < min) {
-                    min = array[i][j];
-                }
+                min = minNumber(array[i]);
             }
             minElements[i] = min;
         }
         return minElements;
     }
 
-    //Метод знаходе мінімальне значення в масиві
+    //Метод знаходе мінімальне значення в масиві та проверяє є масив порожнім
     public static int minNumber(int[] array) {
+        if (array == null || array.length == 0) {
+            throw new IllegalArgumentException("Передан порожній масив");
+        }
         int min = array[0];
-
         for (int i = 0; i < array.length; i++) {
             if (array[i] < min) {
                 min = array[i];
@@ -124,18 +113,52 @@ public class SteppedArrays {
         return min;
     }
 
-    //Метод поділяє всш елементи двумірного масива на мінімальне значення
-    public static void divideResult(int[][] array, int min) {
-        int result;
-
-        for (int i = 0; i < array.length; i++) {
-            if (min == 00) {
-                System.out.println("Error на 0 поділяти не можна");
-                break;
-            } else {
+    //Метод поділяє всш елементи двумірного масива на мінімальне значення якщо можливо , якщо ни выдаэ значення -1
+    public static int[][] divideResult(int[][] array, int min) {
+        if (min != 0 & array != null) {
+            for (int i = 0; i < array.length; i++) {
                 for (int j = 0; j < array[i].length; j++) {
-                    result = array[i][j] / min;
-                    System.out.println("String " + i + array[i][j] + "/" + min + " = " + result);
+                    array[i][j] /= min;
+                }
+            }
+        } else {
+            int[][] errorArray = new int[array.length][];
+            for (int i = 0; i < array.length; i++) {
+                errorArray[i] = new int[array[i].length];
+                Arrays.fill(errorArray[i], -1);
+            }
+            array = errorArray;
+        }
+        return array;
+    }
+
+    //Метод сортує парні строки з зростанням
+    public static void sortEvenRows(int[][] array) {
+        for (int i = 0; i < array.length; i += 2) {
+            for (int j = 0; j < array[i].length - 1; j++) {
+                int minIndex = j;
+                for (int k = j + 1; k < array[i].length; k++) {
+                    if (array[i][k] < array[i][minIndex]) {
+                        minIndex = k;
+                    }
+                }
+                int temp = array[i][j];
+                array[i][j] = array[i][minIndex];
+                array[i][minIndex] = temp;
+            }
+        }
+    }
+
+    //Метод сортує не парні строки з спаданням
+    public static void sortOddRows(int[][] array) {
+        for (int i = 1; i < array.length; i += 2) {
+            for (int j = 0; j < array[i].length - 1; j++) {
+                for (int k = 0; k < array[i].length - j - 1; k++) {
+                    if (array[i][k] < array[i][k + 1]) {
+                        int temp = array[i][k];
+                        array[i][k] = array[i][k + 1];
+                        array[i][k + 1] = temp;
+                    }
                 }
             }
         }
@@ -147,13 +170,10 @@ public class SteppedArrays {
         return random;
     }
 
-    //Метод разпичатує двумірні масиви
+    //Метод разпичатує двумірні масиви та іспользує метод для печаті одномірного масива
     public static void printDoubleArray(int[][] array) {
         for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                System.out.print(array[i][j] + " ");
-            }
-            System.out.println();
+            printArray(array[i]);
         }
     }
 
@@ -162,5 +182,7 @@ public class SteppedArrays {
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i] + " ");
         }
+        System.out.println();
     }
 }
+
