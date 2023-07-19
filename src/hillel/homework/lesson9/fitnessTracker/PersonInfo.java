@@ -5,11 +5,12 @@ public class PersonInfo {
     private final int dayBirthday;
     private final int monthBirthday;
     private final int yearBirthday;
-    String surname;
-    int weight;
-    int systolicPressure;
-    int diastolicPressure;
-    int step;
+    private int age;
+    private String surname;
+    private int weight;
+    private int systolicPressure;
+    private int diastolicPressure;
+    private int step;
 
 
     public PersonInfo(String name, String surname, int dayBirthday, int monthBirthday, int yearBirthday, int weight, int systolicPressure, int diastolicPressure, int step) {
@@ -24,7 +25,7 @@ public class PersonInfo {
         this.step = step;
     }
 
-    public void setSurname(String surname) {
+    void setSurname(String surname) {
         this.surname = surname;
     }
 
@@ -32,20 +33,35 @@ public class PersonInfo {
         this.weight = weight;
     }
 
-    public void setPressure(int pressure) {
-        this.systolicPressure = pressure;
+    public void setSystolicPressurePressure(int systolicPressure) {
+        this.systolicPressure = systolicPressure;
+    }
+
+    public void setDiastolicPressure(int diastolicPressure) {
+        this.diastolicPressure = diastolicPressure;
     }
 
     public void setStep(int step) {
         this.step = step;
     }
 
-    public void outputInformation() {
+    public int getYearBirthday() {
+        return yearBirthday;
+    }
+
+    public int getAge(int yearToDay) {
+        age = yearToDay - getYearBirthday();
+        return age;
+    }
+
+    public void printAccountInfo() {
         System.out.println("Name: " + name);
         System.out.println("Surname: " + surname);
         System.out.println("Date of birth: " + dayBirthday + "." + monthBirthday + "." + yearBirthday);
-        System.out.println("Weight: " + weight);
-        System.out.println("Pressure: " + "s." + systolicPressure + "/" + "d." + diastolicPressure);
+        System.out.println("Age: " + age);
+        System.out.println("Weight: " + weight + " kg");
+        System.out.println("Pressure: " + "s." + systolicPressure + " / " + "d." + diastolicPressure);
         System.out.println("Step: " + step);
+        System.out.println();
     }
 }
