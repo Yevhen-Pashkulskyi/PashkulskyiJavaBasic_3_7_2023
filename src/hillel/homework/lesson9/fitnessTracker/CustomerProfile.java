@@ -15,13 +15,13 @@ public class CustomerProfile {
         michaelJordan.getAge();
         michaelJordan.printAccountInfo();
 
-        judiMcnamara.surname = "Chan";
-        judiMcnamara.weight = 65;
-        judiMcnamara.systolicPressure = 118;
-        judiMcnamara.diastolicPressure = 76;
+        judiMcnamara.setSurname("Chan");
+        judiMcnamara.setWeight(65);
+        judiMcnamara.setSystolicPressure(118);
+        judiMcnamara.setDiastolicPressure(76);
         judiMcnamara.printAccountInfo();
 
-        nikSeagal.step = 12000;
+        nikSeagal.setStep(12000);
         nikSeagal.printAccountInfo();
     }
 }

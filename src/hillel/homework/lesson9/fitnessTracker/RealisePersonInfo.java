@@ -10,11 +10,97 @@ public class RealisePersonInfo {
 
     private static int yearToDay = 2023;
     private int age;
-    String surname;
-    int weight;
-    int systolicPressure;
-    int diastolicPressure;
-    int step;
+    private String surname;
+    private int weight;
+    private int systolicPressure;
+
+    private int diastolicPressure;
+
+    private int step;
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDayBirthday() {
+        return dayBirthday;
+    }
+
+    public int getMonthBirthday() {
+        return monthBirthday;
+    }
+
+    public int getYearBirthday() {
+        return yearBirthday;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public int getSystolicPressure() {
+        return systolicPressure;
+    }
+
+    public void setSystolicPressure(int systolicPressure) {
+        this.systolicPressure = systolicPressure;
+    }
+
+    public int getDiastolicPressure() {
+        return diastolicPressure;
+    }
+
+    public void setDiastolicPressure(int diastolicPressure) {
+        this.diastolicPressure = diastolicPressure;
+    }
+
+    public int getStep() {
+        return step;
+    }
+
+    public void setStep(int step) {
+        this.step = step;
+    }
+
+    public String getSurname(String surname) {
+        return surname;
+    }
+
+    public int getWeight(int weight) {
+        return weight;
+    }
+
+    public int getSystolicPressure(int systolicPressure) {
+        return systolicPressure;
+    }
+
+    public int getDiastolicPressure(int diastolicPressure) {
+        return diastolicPressure;
+    }
+
+    public int getStep(int step) {
+        return step;
+    }
 
     public int getAge() {
         age = yearToDay - yearBirthday;
