@@ -9,8 +9,6 @@ public class RealisePersonInfo {
     private final int yearBirthday;
     private final String email;
     private final String phoneNumber;
-
-    private static int yearToDay = 2023;
     private int age;
     private String surname;
     private int weight;
