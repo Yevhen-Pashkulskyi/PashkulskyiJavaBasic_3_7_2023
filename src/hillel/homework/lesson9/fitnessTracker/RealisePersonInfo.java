@@ -13,10 +13,24 @@ public class RealisePersonInfo {
     private String surname;
     private int weight;
     private int systolicPressure;
-
     private int diastolicPressure;
-
     private int step;
+
+    public RealisePersonInfo(String name, String surname, int dayBirthday, int monthBirthday, int yearBirthday, String email, String phoneNumber, int weight, int systolicPressure, int diastolicPressure, int step) {
+        this.name = name;
+        this.surname = surname;
+        this.dayBirthday = dayBirthday;
+        this.monthBirthday = monthBirthday;
+        this.yearBirthday = yearBirthday;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.weight = weight;
+        this.systolicPressure = systolicPressure;
+        this.diastolicPressure = diastolicPressure;
+        this.step = step;
+        age = LocalDate.now().getYear() - yearBirthday;
+
+    }
 
     public String getName() {
         return name;
@@ -74,9 +88,9 @@ public class RealisePersonInfo {
         this.diastolicPressure = diastolicPressure;
     }
 
-    public int getStep() {
-        return step;
-    }
+//    public int getStep() {
+//        return step;
+//    }
 
     public void setStep(int step) {
         this.step = step;
@@ -104,22 +118,6 @@ public class RealisePersonInfo {
 
     public int getAge() {
         return age;
-    }
-
-    public RealisePersonInfo(String name, String surname, int dayBirthday, int monthBirthday, int yearBirthday, String email, String phoneNumber, int weight, int systolicPressure, int diastolicPressure, int step) {
-        this.name = name;
-        this.surname = surname;
-        this.dayBirthday = dayBirthday;
-        this.monthBirthday = monthBirthday;
-        this.yearBirthday = yearBirthday;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.weight = weight;
-        this.systolicPressure = systolicPressure;
-        this.diastolicPressure = diastolicPressure;
-        this.step = step;
-        age = LocalDate.now().getYear() - yearBirthday;
-
     }
 
     public void printAccountInfo() {
