@@ -88,9 +88,9 @@ public class RealisePersonInfo {
         this.diastolicPressure = diastolicPressure;
     }
 
-//    public int getStep() {
-//        return step;
-//    }
+    public int getStep() {
+        return step;
+    }
 
     public void setStep(int step) {
         this.step = step;
