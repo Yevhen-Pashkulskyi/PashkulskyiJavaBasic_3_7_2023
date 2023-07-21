@@ -1,5 +1,7 @@
 package hillel.homework.lesson9.fitnessTracker;
 
+import java.time.LocalDate;
+
 public class RealisePersonInfo {
     private final String name;
     private final int dayBirthday;
@@ -103,7 +105,6 @@ public class RealisePersonInfo {
     }
 
     public int getAge() {
-        age = yearToDay - yearBirthday;
         return age;
     }
 
@@ -119,6 +120,8 @@ public class RealisePersonInfo {
         this.systolicPressure = systolicPressure;
         this.diastolicPressure = diastolicPressure;
         this.step = step;
+        age = LocalDate.now().getYear() - yearBirthday;
+
     }
 
     public void printAccountInfo() {
