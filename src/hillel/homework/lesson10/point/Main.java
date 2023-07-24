@@ -11,9 +11,10 @@ public class Main {
         System.out.println("Distance from Point 1 to Point 2: " + firstPoint.distanceTo(secondPoint));
         System.out.println("Distance between Point 1 and Point 2: " + Point.distanceBetween(firstPoint, secondPoint));
 
-        System.out.println("equal or unequal  " + firstPoint.equals(secondPoint));
+        System.out.println("equal or unequal:  " + firstPoint.equals(secondPoint));
 
         Point clonePoint = (Point) firstPoint.clone();
         System.out.println("Clone of Point first : " + clonePoint);
+        System.out.println("equal or unequal first Point and clone Point: " + firstPoint.equals(clonePoint));
     }
 }
