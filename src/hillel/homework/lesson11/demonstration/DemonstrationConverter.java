@@ -16,13 +16,13 @@ public class DemonstrationConverter {
         double celsius = scanner.nextDouble();
 
         double fahrenheit = celsiusToFahrenheit.convertFromCelsius(celsius);
-        System.out.printf("Celsius to fahrenheit result:\t %.2f ℉ %n", fahrenheit);
+        System.out.printf("Celsius to fahrenheit result: %.2f℉ %n", fahrenheit);
         double fahrenheitToCelsius = celsiusToFahrenheit.convertToCelsius(fahrenheit);
-        System.out.printf("Fahrenheit to celsius result:\t %.2f ℃ %n", fahrenheitToCelsius);
+        System.out.printf("Fahrenheit to celsius result: %.2f℃ %n", fahrenheitToCelsius);
 
         double kelvin = celsiusToKelvin.convertFromCelsius(celsius);
-        System.out.printf("Celsius to kelvin result:\t %.2f ºK %n", kelvin);
+        System.out.printf("Celsius to kelvin result: %.2fºK %n", kelvin);
         double kelvinToCelsius = celsiusToKelvin.convertToCelsius(kelvin);
-        System.out.printf("Kelvin to celsius result:\t %.2f ℃ %n", kelvinToCelsius);
+        System.out.printf("Kelvin to celsius result: %.2f℃ %n", kelvinToCelsius);
     }
 }
