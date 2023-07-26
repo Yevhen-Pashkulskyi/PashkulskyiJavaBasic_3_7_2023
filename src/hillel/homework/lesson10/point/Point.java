@@ -15,24 +15,38 @@ import static java.lang.Math.sqrt;
 public class Point implements Cloneable {
     private int xAxis;
     private int yAxis;
+    StringBuilder sb;
+    private static int count;
 
-    public Point(int xAxis, int yAxis) {
-        this.xAxis = xAxis;
-        this.yAxis = yAxis;
+    public Point(int x, int y) {
+        xAxis = x;
+        yAxis = y;
+        count++;
+//        sb = new StringBuilder();
     }
 
-    public double getxAxis() {
+    public int getxAxis() {
         return xAxis;
     }
 
-    public double getyAxis() {
+    public void setxAxis(int xAxis) {
+        this.xAxis = xAxis;
+    }
+
+    public void setyAxis(int yAxis) {
+        this.yAxis = yAxis;
+    }
+
+    public int getyAxis() {
         return yAxis;
     }
 
     public double distanceTo(Point other) {
-        double dx = this.xAxis - other.xAxis;
-        double dy = this.yAxis - other.yAxis;
-        return sqrt(pow(dx, 2) + pow(dy, 2));
+        if (other == null) {
+            System.out.println("Error");
+            return 0.0;
+        }
+        return sqrt(pow(this.xAxis - other.xAxis, 2) + pow(this.yAxis - other.yAxis, 2));
     }
 
     public static double distanceBetween(Point firstPoint, Point secondPoint) {
@@ -60,6 +74,9 @@ public class Point implements Cloneable {
     protected Object clone() throws CloneNotSupportedException {
         return new Point(xAxis, yAxis);
     }
+//    public void print(){
+//        System.out.println(count);
+//    }
 }
 
 

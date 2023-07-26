@@ -1,9 +1,11 @@
 package hillel.homework.lesson10.point;
 
-public class Main {
+public class MainPoint {
     public static void main(String[] args) throws CloneNotSupportedException {
-        Point firstPoint = new Point(1, 7);
+        Point firstPoint = new Point(0, 0);
         Point secondPoint = new Point(1, 7);
+//        firstPoint.print();
+
 
         System.out.println("Point 1: " + firstPoint);
         System.out.println("Point 2: " + secondPoint);
