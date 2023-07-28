@@ -1,7 +1,6 @@
 package hillel.homework.lesson10.point;
 
-import static java.lang.Math.pow;
-import static java.lang.Math.sqrt;
+import static java.lang.Math.*;
 
 
 // TODO: 22.07.2023 Створит клас Point - точка на площині. Будемо вважати, що координати цілі значення щоб не ускладнювати задачу. Передбачити наступний функціонал:
