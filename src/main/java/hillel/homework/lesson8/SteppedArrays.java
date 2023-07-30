@@ -1,6 +1,5 @@
-package hillel.homework.lesson8;
+package main.java.hillel.homework.lesson8;
 
-import javax.print.attribute.standard.DateTimeAtCompleted;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;

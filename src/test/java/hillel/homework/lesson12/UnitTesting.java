@@ -1,7 +1,9 @@
 package hillel.homework.lesson12;
 
-public class UnitTesting {
+import org.testng.annotations.Test;
+import org.testng.*;
 
+public class UnitTesting {
     public int averageIntegerArray(int[] array) {
         int average = 0;
         for (int i = 0; i < array.length; i++) {
@@ -17,6 +19,7 @@ public class UnitTesting {
         }
         return average / array.length;
     }
+
 
     public String checkIntegerArraySquare(int[][] array) {
 

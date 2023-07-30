@@ -1,4 +1,4 @@
-package hillel.homework.lesson5;
+package main.java.hillel.homework.lesson5;
 
 public class GitCommit {
     public static void main(String[] args) {

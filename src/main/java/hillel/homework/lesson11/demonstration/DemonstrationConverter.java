@@ -1,8 +1,6 @@
 package hillel.homework.lesson11.demonstration;
 
-import hillel.homework.lesson11.CelsiusToFahrenheit;
-import hillel.homework.lesson11.CelsiusToKelvin;
-import hillel.homework.lesson11.Converter;
+import hillel.homework.lesson11.*;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package hillel.homework.lesson7;
+package main.java.hillel.homework.lesson7;
 
 import java.util.concurrent.ThreadLocalRandom;
 

@@ -1,4 +1,4 @@
-package hillel.homework.lesson8;
+package main.java.hillel.homework.lesson8;
 
 public class PersonInfo {
     private String firstName;
