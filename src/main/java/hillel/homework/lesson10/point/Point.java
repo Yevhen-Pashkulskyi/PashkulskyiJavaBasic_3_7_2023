@@ -1,4 +1,4 @@
-package main.java.hillel.homework.lesson10.point;
+package hillel.homework.lesson10.point;
 
 import static java.lang.Math.*;
 

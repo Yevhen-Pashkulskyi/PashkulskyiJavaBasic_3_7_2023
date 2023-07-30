@@ -1,4 +1,4 @@
-package main.java.hillel.homework.lesson9.fitnessTracker;
+package hillel.homework.lesson9.fitnessTracker;
 
 public class CustomerProfile {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package main.java.hillel.homework.lesson10.point;
+package hillel.homework.lesson10.point;
 
 public class MainPoint {
     public static void main(String[] args) throws CloneNotSupportedException {
