@@ -8,6 +8,7 @@ lesson2/
 lesson3/
 lesson4/
 *.DS_Store
+target/
 # Default ignored files
 /shelf/
 /workspace.xml
