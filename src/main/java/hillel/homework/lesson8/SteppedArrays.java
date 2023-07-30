@@ -1,4 +1,4 @@
-package main.java.hillel.homework.lesson8;
+package hillel.homework.lesson8;
 
 import java.util.Arrays;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package main.java.hillel.homework.lesson9;
+package hillel.homework.lesson9;
 
 public class Burgers {
     private String bun;
