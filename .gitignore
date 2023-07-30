@@ -16,4 +16,4 @@ lesson4/
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
-/src/hillel/homework/lesson6/
+/src/main/java/hillel/homework/lesson6/
