@@ -3,10 +3,6 @@
 *.iml
 out/
 scrinshot/
-lesson1/
-lesson2/
-lesson3/
-lesson4/
 *.DS_Store
 target/
 # Default ignored files
@@ -17,4 +13,4 @@ target/
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
-/src/main/java/hillel/homework/lesson6/
+
