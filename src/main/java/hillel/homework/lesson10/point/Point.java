@@ -1,16 +1,10 @@
 package hillel.homework.lesson10.point;
 
-import static java.lang.Math.*;
+import java.util.Objects;
 
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
 
-// TODO: 22.07.2023 Створит клас Point - точка на площині. Будемо вважати, що координати цілі значення щоб не ускладнювати задачу. Передбачити наступний функціонал:
-//змінити або отримати поточні координати;
-//розрахувати відстань до іншої точки;
-//розрахувати відстань між двома точками;
-//додати можливість порівнювати дві точки - точки вважаються рівними, якщо їх координати співпадають;
-//перевизначити метод toString();
-//додати можливість створювати копію обʼєкту (через метод clone та конструктор копіювання)
-//Застосувати знання по ООП та класу Object. Уникати дублювання коду. 
 public class Point implements Cloneable {
     private int xAxis;
     private int yAxis;
@@ -24,19 +18,19 @@ public class Point implements Cloneable {
 //        sb = new StringBuilder();
     }
 
-    public int getxAxis() {
+    public int getXAxis() {
         return xAxis;
     }
 
-    public void setxAxis(int xAxis) {
+    public void setXAxis(int xAxis) {
         this.xAxis = xAxis;
     }
 
-    public void setyAxis(int yAxis) {
+    public void setYAxis(int yAxis) {
         this.yAxis = yAxis;
     }
 
-    public int getyAxis() {
+    public int getYAxis() {
         return yAxis;
     }
 
@@ -49,6 +43,9 @@ public class Point implements Cloneable {
     }
 
     public static double distanceBetween(Point firstPoint, Point secondPoint) {
+        if (firstPoint == null | secondPoint == null) {
+            return 0.0;
+        }
         return firstPoint.distanceTo(secondPoint);
     }
 
@@ -61,7 +58,12 @@ public class Point implements Cloneable {
             return false;
         }
         Point other = (Point) obj;
-        return Double.compare(xAxis, other.xAxis) == 0 && Double.compare(yAxis, other.yAxis) == 0;
+        return xAxis == other.xAxis && yAxis == other.yAxis;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(xAxis, yAxis);
     }
 
     @Override
@@ -71,11 +73,8 @@ public class Point implements Cloneable {
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        return new Point(xAxis, yAxis);
+        return super.clone();
     }
-//    public void print(){
-//        System.out.println(count);
-//    }
 }
 
 
