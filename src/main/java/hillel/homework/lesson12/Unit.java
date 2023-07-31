@@ -9,14 +9,17 @@ public class Unit {
         return (double) average / array.length;
     }
 
-    public boolean checkIntegerArraySquare(int[][] array) {
-        int line = 0;
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-            }
-            line = array[i].length;
+    public boolean checkIntegerArraySquare(int[][] matrix) {
+        if (matrix == null || matrix.length == 0) {
+            return false;
         }
-        return array.length == line;
+        int rows = matrix.length;
+        for (int[] row : matrix) {
+            if (row == null || row.length != rows) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
