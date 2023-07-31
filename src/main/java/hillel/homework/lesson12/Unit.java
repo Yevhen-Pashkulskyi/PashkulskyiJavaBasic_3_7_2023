@@ -1,6 +1,6 @@
 package hillel.homework.lesson12;
 
-public class UnitTesting {
+public class Unit {
     public double averageArray(int[] array) {
         double average = 0;
         for (int i = 0; i < array.length; i++) {
