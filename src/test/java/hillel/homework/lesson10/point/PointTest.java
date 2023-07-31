@@ -13,6 +13,7 @@ public class PointTest {
         double expectedDistance = 5.0;
         double actualDistance = firestPoint.distanceTo(secondPoint);
         assertEquals(expectedDistance, actualDistance, 0.001); // Точність обчислень - 0.001
+
     }
 
     @Test
@@ -22,6 +23,7 @@ public class PointTest {
         double expectedDistance = 5.0;
         double actualDistance = Point.distanceBetween(firestPoint, secondPoint);
         assertEquals(expectedDistance, actualDistance, 0.001); // Точність обчислень - 0.001
+
     }
 
     @Test
@@ -32,6 +34,7 @@ public class PointTest {
 
         assertEquals(firestPoint, secondPoint);
         assertNotEquals(firestPoint, thirdPoint);
+
     }
 
     @Test
