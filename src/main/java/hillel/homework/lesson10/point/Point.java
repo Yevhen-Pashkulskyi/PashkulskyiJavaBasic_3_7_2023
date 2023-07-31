@@ -2,8 +2,7 @@ package hillel.homework.lesson10.point;
 
 import java.util.Objects;
 
-import static java.lang.Math.pow;
-import static java.lang.Math.sqrt;
+import static java.lang.Math.*;
 
 public class Point implements Cloneable {
     private int xAxis;
