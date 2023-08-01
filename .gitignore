@@ -5,6 +5,7 @@ out/
 scrinshot/
 *.DS_Store
 target/
+github-actions.yml
 # Default ignored files
 /shelf/
 /workspace.xml
