@@ -1,4 +1,4 @@
-package hillel.homework.lesson13;
+package hillel.homework.lesson13.phone;
 
 public class PhonesMain {
     public static void main(String[] args) {
