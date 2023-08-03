@@ -1,6 +1,6 @@
 package hillel.homework.lesson13.drinkMachine;
 
-public enum DrinkMachine {
+public enum DrinksMachine {
 
     // TODO: 01.08.2023 Інструменти для використання:
     //1) enum (напої)
@@ -22,5 +22,6 @@ public enum DrinkMachine {
     //drinksChoice.toUpperCase();
     //Drinks drinks = Drinks.valueOf(drinksChoice);
 
-//    private String = "cofe";
+    COFFEE, TEA, LEMONADE, MOJITO, MINERAL_WATER, COCA_COLA;
+
 }
