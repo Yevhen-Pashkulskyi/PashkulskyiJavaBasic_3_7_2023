@@ -3,6 +3,8 @@ package hillel.homework.lesson13.drinkMachine;
 public abstract class DrinksMachine {
     private static int totalDrinksCount = 0;
 
+    private static double totalCost = 0;
+
     public static int getTotalDrinksCount() {
         return totalDrinksCount;
     }
@@ -10,8 +12,6 @@ public abstract class DrinksMachine {
     public static double getTotalCost() {
         return totalCost;
     }
-
-    private static double totalCost = 0;
 
     public static void makeDrink(Drinks drinks) {
         switch (drinks) {
