@@ -7,5 +7,4 @@ public class MenuPrices {
     public static final double MOJITO = 170.0;
     public static final double MINERAL_WATTER = 35.0;
     public static final double COCA_COLA = 50.0;
-
 }
