@@ -1,6 +1,8 @@
 package hillel.homework.lesson14.verificationLoginAndPassword;
 
+import hillel.homework.lesson14.verificationLoginAndPassword.exception.WrongEqualsPasswordException;
 import hillel.homework.lesson14.verificationLoginAndPassword.exception.WrongLoginException;
+import hillel.homework.lesson14.verificationLoginAndPassword.exception.WrongLengthPasswordException;
 import hillel.homework.lesson14.verificationLoginAndPassword.exception.WrongPasswordException;
 
 public class User {
@@ -12,13 +14,28 @@ public class User {
     private String password;
     private String confirmPassword;
 
-    public User(String login, String password, String confirmPassword) {
+//    public User(String login, String password, String confirmPassword) {
+//        validationLogin(login);
+//        lengthValidationPassword(password);
+//        validationPassword(password);
+//        equalsValidationPassword(password, confirmPassword);
+//
+//        this.login = login;
+//        this.password = password;
+//        this.confirmPassword = confirmPassword;
+//    }
+
+    public User(String login) {
         validationLogin(login);
-        validationLengthPassword(password, confirmPassword);
         this.login = login;
+    }
+
+    public User(String password, String confirmPassword) {
+        lengthValidationPassword(password);
+        equalsValidationPassword(password, confirmPassword);
+        validationLogin(password);
         this.password = password;
         this.confirmPassword = confirmPassword;
-
     }
 
     private void validationLogin(String login) {
@@ -27,20 +44,22 @@ public class User {
         }
     }
 
-    private void validationLengthPassword(String password, String confirmPassword) {
-        if (!password.equals(confirmPassword)) {
-            throw new WrongPasswordException("Password must match");
+    private void lengthValidationPassword(String password) {
+        if (MIN_PASSWORD_LENGTH > password.length() || password.length() > MAX_PASSWORD_LENGTH) {
+            throw new WrongLengthPasswordException("The length of the password must be between 6 and 25 characters.");
         }
-        if (MIN_PASSWORD_LENGTH > password.length() || password.length() > MAX_PASSWORD_LENGTH || !password.matches("^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z\\d]+$")) {
-            throw new WrongPasswordException("The password must contain at least one letter, one number and be 6-25 characters long.");
+    }
+
+    private void validationPassword(String password) {
+        if (!password.matches("^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z\\d]+$")) {
+            throw new WrongPasswordException("The password must contain at least one letter, one number.");
         }
-//    } private void equalsValidationPassword(String password, String confirmPassword){
-//        if(!password.equals(confirmPassword)){
-//            throw new WrongPasswordException("Password must match");
-//        }
-//        if (MIN_PASSWORD_LENGTH > password.length() || password.length() > MAX_PASSWORD_LENGTH || !password.matches("^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z\\d]+$")){
-//            throw new WrongPasswordException("The password must contain at least one letter, one number and be 6-25 characters long.");
-//        }
+    }
+
+    private void equalsValidationPassword(String password, String confirmPassword) {
+        if (!password.equals(confirmPassword) || password == null) {
+            throw new WrongEqualsPasswordException("Password must match");
+        }
     }
 
     public String getLogin() {
@@ -55,14 +74,4 @@ public class User {
     public String getConfirmPassword() {
         return confirmPassword;
     }
-
-
-    // TODO: 04.08.2023 Створити клас User з полями для зберігання логіну, паролю.
-    // В конструкторі робити валідацію введених полів.
-    // Написати тести для перевірки логіки.
-    // Написати простий клас для демонстрації роботи програми (його тестувати не потрібно).
-    // Зчитувати дані з консолі. Під час демонстрації відловлювати помилки.
-    // Після 3 помилки вивести користувачу повідомлення і завершити роботу програми.
-    // В будь-якому разі вивести повідомлення "Дякую, що скористались нашим сервісом".
-    // Основне - продемонструвати вміння використовувати try-catch-finally конструкцію.
 }
