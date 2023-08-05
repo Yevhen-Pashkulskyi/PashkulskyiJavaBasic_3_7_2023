@@ -61,7 +61,6 @@ public class User {
             throw new WrongEqualsPasswordException("Password must match");
         }
     }
-
     public String getLogin() {
         return login;
     }
