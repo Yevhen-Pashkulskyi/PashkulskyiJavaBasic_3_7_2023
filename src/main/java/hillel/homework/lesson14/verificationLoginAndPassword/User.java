@@ -24,6 +24,15 @@ public class User {
         this.confirmPassword = confirmPassword;
     }
 
+    public User(String login) {
+        this.login = login;
+    }
+
+    public User(String password, String confirmPassword) {
+        this.password = password;
+        this.confirmPassword = confirmPassword;
+    }
+
     private void validationLogin(String login) {
         if (login.length() > MAX_LOGIN_LENGTH || !login.matches("^[a-zA-Z]+$")) {
             throw new WrongLoginException("Login should be up to 20 characters and contain only English letters.");
@@ -35,7 +44,6 @@ public class User {
             throw new WrongLengthPasswordException("The length of the password must be between 6 and 25 characters.");
         }
     }
-
     private void validationPassword(String password) {
         if (!password.matches("^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z\\d]+$")) {
             throw new WrongPasswordException("The password must contain at least one letter, one number.");
@@ -45,6 +53,7 @@ public class User {
 //        char[] symbolPassword = password.toCharArray();
 //        boolean letter = false;
 //        boolean digit = false;
+
 //
 ////        for (char symbol : symbolPassword) {
 ////            if (Character.isLetter(symbol)) {
