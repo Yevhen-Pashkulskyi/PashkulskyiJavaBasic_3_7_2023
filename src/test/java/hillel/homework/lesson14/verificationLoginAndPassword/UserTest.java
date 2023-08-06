@@ -1,8 +1,5 @@
 package hillel.homework.lesson14.verificationLoginAndPassword;
 
-
-import hillel.homework.lesson14.verificationLoginAndPassword.exception.WrongEqualsPasswordException;
-import hillel.homework.lesson14.verificationLoginAndPassword.exception.WrongLengthPasswordException;
 import hillel.homework.lesson14.verificationLoginAndPassword.exception.WrongLoginException;
 import hillel.homework.lesson14.verificationLoginAndPassword.exception.WrongPasswordException;
 import org.junit.jupiter.api.Test;
@@ -14,13 +11,12 @@ public class UserTest {
     @Test
     public void testValidationLogin_ValidLogin() {
         User user = new User("username");
-        // No exception should be thrown
     }
 
     @Test
     public void testValidationLogin_LongLogin() {
         assertThrows(WrongLoginException.class, () -> {
-            User user = new User("thisloginisverylongandshouldnotbeallowed");
+            User user = new User("thisLoginIsVeryLongAndShouldNotBeaLowed");
         });
     }
 
@@ -34,20 +30,21 @@ public class UserTest {
     @Test
     public void testLengthValidationPassword_ValidPassword() {
         User user = new User("password123", "password123");
-        // No exception should be thrown
     }
 
     @Test
-    public void testLengthValidationPassword_ShortPassword() {
-        assertThrows(WrongLengthPasswordException.class, () -> {
-            User user = new User("shortpwd", "shortpwd");
+    public void testLengthValidationPassword_LengthPassword() {
+        assertThrows(WrongPasswordException.class, () -> {
+            User user = new User("short", "short");
+        });
+        assertThrows(WrongPasswordException.class, () -> {
+            User user = new User("veryLongPassword123456789", "veryLongPassword123456789");
         });
     }
 
     @Test
     public void testValidationPassword_ValidPassword() {
         User user = new User("password123", "password123");
-        // No exception should be thrown
     }
 
     @Test
@@ -72,7 +69,7 @@ public class UserTest {
 
     @Test
     public void testEqualsValidationPassword_NotMatchingPasswords() {
-        assertThrows(WrongEqualsPasswordException.class, () -> {
+        assertThrows(WrongPasswordException.class, () -> {
             User user = new User("password123", "notmatching");
         });
     }
