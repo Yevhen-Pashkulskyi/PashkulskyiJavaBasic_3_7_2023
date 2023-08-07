@@ -1,7 +1,7 @@
 package hillel.homework.lesson14.verificationLoginAndPassword;
 
-import hillel.homework.lesson14.verificationLoginAndPassword.exception.WrongPasswordException;
-import hillel.homework.lesson14.verificationLoginAndPassword.exception.WrongLoginException;
+import hillel.homework.lesson14.verificationLoginAndPassword.exception.*;
+
 
 import java.util.Scanner;
 
@@ -12,15 +12,15 @@ public class UserVerification {
     public static void main(String[] args) {
         int attemptCounter = 0;
 
-        while (attemptCounter < COUNTER) {
+        while (true) {
 
             try {
-                System.out.println("Enter login: ");
-                String login = scanner.nextLine();
-                System.out.println("Enter password: ");
-                String password = scanner.nextLine();
-                System.out.println("Enter confirm password: ");
-                String confirmPassword = scanner.nextLine();
+//                System.out.println("Enter login: ");
+                String login = null;//scanner.nextLine();
+//                System.out.println("Enter password: ");
+                String password = "password123";//scanner.nextLine();
+//                System.out.println("Enter confirm password: ");
+                String confirmPassword = "password123";//scanner.nextLine();
 
                 User user = new User(login, password, confirmPassword);
                 System.out.printf("Congratulations %s ! Your created successfully!\n\n", user.getLogin());

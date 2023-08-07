@@ -1,7 +1,6 @@
 package hillel.homework.lesson14.verificationLoginAndPassword;
 
-import hillel.homework.lesson14.verificationLoginAndPassword.exception.WrongLoginException;
-import hillel.homework.lesson14.verificationLoginAndPassword.exception.WrongPasswordException;
+import hillel.homework.lesson14.verificationLoginAndPassword.exception.*;
 
 public class User {
     private static final int MAX_LOGIN_LENGTH = 20;
@@ -20,33 +19,30 @@ public class User {
         this.confirmPassword = confirmPassword;
     }
 
-    protected User(String login) {
-        validateLogin(login);
-        this.login = login;
-    }
-
-    protected User(String password, String confirmPassword) {
-        validationPassword(password, confirmPassword);
-        this.password = password;
-        this.confirmPassword = confirmPassword;
-    }
-
     private void validateLogin(String login) {
-        if (login.length() > MAX_LOGIN_LENGTH || !login.matches("^[a-zA-Z]+$")) {
-            throw new WrongLoginException("Login should be up to 20 characters, and contain only English letters.");
+        if (login.length() > MAX_LOGIN_LENGTH) {
+            throw new WrongLoginException("Login should be up to 20 characters, and only English letters.");
+        } else if (emptyAndNull(login)) {
+            throw new WrongLoginException("Login cannot be null or empty");
+        } else if (!login.matches("^[a-zA-Z]+$")) {
+            throw new WrongLoginException("only English letters.");
         }
     }
-
 
     private void validationPassword(String password, String confirmPassword) {
-        if /*(!password.matches("^.{6,20}$")) {*/ (MIN_PASSWORD_LENGTH > password.length() || password.length() > MAX_PASSWORD_LENGTH) {
+        if (!password.matches("^.{6,20}$")) { /*(MIN_PASSWORD_LENGTH > password.length() || password.length() > MAX_PASSWORD_LENGTH) {*/
             throw new WrongPasswordException("The length of the password must be between 6 and 25 characters.");
-        }
-        if (!password.equals(confirmPassword)) {
+        } else if (!password.equals(confirmPassword)) {
             throw new WrongPasswordException("Password must match");
+        } else if (emptyAndNull(password)) {
+            throw new WrongPasswordException("Password cannot be null or empty.");
+        } else if (!laterDigital(password)) {
+            throw new WrongPasswordException("The password must contain at least one letter and one number.");
         }
+    }
 
-        char[] symbolPassword = password.toCharArray();
+    public boolean laterDigital(String str) {
+        char[] symbolPassword = str.toCharArray();
         boolean letter = false;
         boolean digit = false;
 
@@ -57,19 +53,20 @@ public class User {
                 digit = true;
             }
             if (letter && digit) {
-                return;
+                return true;
             }
         }
-        throw new WrongPasswordException("The password must contain at least one letter and one number.");
-
+        return false;
     }
 
+    public boolean emptyAndNull(String str) {
+        return (str == null || str.equals(""));
+    }
     //    private void symbolValidationPassword(String password) {
 //        if (!password.matches("^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z\\d]+$")) {
 //            throw new WrongPasswordException("The password must contain at least one letter, one number.");
 //        }
 //    }
-
 
     public String getLogin() {
         return login;

@@ -2,79 +2,144 @@ package hillel.homework.lesson14.verificationLoginAndPassword;
 
 import hillel.homework.lesson14.verificationLoginAndPassword.exception.WrongLoginException;
 import hillel.homework.lesson14.verificationLoginAndPassword.exception.WrongPasswordException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class UserTest {
+    private static final String VALID_PASSWORD = "password123";
+    private static final String VALID_CONFIG_PASSWORD = VALID_PASSWORD;
+    private static final String VALID_LOGIN = "userName";
 
     @Test
-    public void testValidationLogin_ValidLogin() {
-        User user = new User("username");
+    public void testValidLogin() {
+        User user = new User(VALID_LOGIN, VALID_PASSWORD, VALID_CONFIG_PASSWORD);
     }
 
     @Test
-    public void testValidationLogin_LongLogin() {
+    public void testLongLogin() {
+        String tested = "thisLoginIsVeryLongAndShouldNotBeaLowed";
+
         assertThrows(WrongLoginException.class, () -> {
-            User user = new User("thisLoginIsVeryLongAndShouldNotBeaLowed");
+            User user = new User(tested, VALID_PASSWORD, VALID_CONFIG_PASSWORD);
         });
     }
 
     @Test
-    public void testValidationLogin_InvalidCharacters() {
+    public void testNullLogin() {
+        String tested = null;
+
         assertThrows(WrongLoginException.class, () -> {
-            User user = new User("username123");
+            User user = new User(tested, VALID_PASSWORD, VALID_CONFIG_PASSWORD);
         });
     }
 
     @Test
-    public void testLengthValidationPassword_ValidPassword() {
-        User user = new User("password123", "password123");
+    public void testEmptyLogin() {
+        String tested = "";
+
+        assertThrows(WrongLoginException.class, () -> {
+            User user = new User(tested, VALID_PASSWORD, VALID_CONFIG_PASSWORD);
+        });
     }
 
     @Test
-    public void testLengthValidationPassword_ShortLengthPassword() {
+    public void testDigitalLogin() {
+        String tested = "username123";
+
+        assertThrows(WrongLoginException.class, () -> {
+            User user = new User(tested, VALID_PASSWORD, VALID_CONFIG_PASSWORD);
+        });
+    }
+
+    @Test
+    public void testSymbolLogin() {
+        String tested = "user$!?name";
+
+        assertThrows(WrongLoginException.class, () -> {
+            User user = new User(tested, VALID_PASSWORD, VALID_CONFIG_PASSWORD);
+        });
+    }
+
+
+    @Test
+    public void testValidPassword() {
+        User user = new User(VALID_LOGIN, VALID_PASSWORD, VALID_CONFIG_PASSWORD);
+    }
+
+    @Test
+    public void testShortPassword() {
+        String tested = "short";
+
         assertThrows(WrongPasswordException.class, () -> {
-            User user = new User("short", "short");
+            User user = new User(VALID_LOGIN, tested, tested);
         });
     }
 
-    public void testLengthValidationPassword_LongLengthPassword() {
+    @Test
+    public void testLongPassword() {
+        String tested = "veryLongPassword123456";
+
+        /*WrongPasswordException message =*/
         assertThrows(WrongPasswordException.class, () -> {
-            User user = new User("veryLongPassword123456789", "veryLongPassword123456789");
+            User user = new User(VALID_LOGIN, tested, tested);
         });
+//        assertEquals("The length of the password must be between 6 and 25 characters.", message.getMessage());
     }
 
     @Test
-    public void testValidationPassword_ValidPassword() {
-        User user = new User("password123", "password123");
-    }
+    public void testNoLetterPassword() {
+        String tested = "123456789";
 
-    @Test
-    public void testValidationPassword_NoLetter() {
         assertThrows(WrongPasswordException.class, () -> {
-            User user = new User("123456789", "123456789");
+            User user = new User(VALID_LOGIN, tested, tested);
         });
     }
 
     @Test
-    public void testValidationPassword_NoDigit() {
+    public void testNoDigitPassword() {
+        String tested = "password";
+
         assertThrows(WrongPasswordException.class, () -> {
-            User user = new User("password", "password");
+            User user = new User(VALID_LOGIN, tested, tested);
         });
     }
 
     @Test
-    public void testEqualsValidationPassword_MatchingPasswords() {
-        User user = new User("password123", "password123");
+    public void testEqualsPasswords() {
+        String tested = "password123";
+
+        User user = new User(VALID_LOGIN, tested, tested);
         // No exception should be thrown
     }
 
     @Test
-    public void testEqualsValidationPassword_NotMatchingPasswords() {
+    public void testNotEqualsPasswords() {
+        String password = "password123";
+        String notEquals = "notEquals123";
+
         assertThrows(WrongPasswordException.class, () -> {
-            User user = new User("password123", "notmatching");
+            User user = new User(VALID_LOGIN, password, notEquals);
+        });
+    }
+
+    @Test
+    public void testNullPasswords() {
+        String tested = null;
+
+        Assertions.assertThrows(WrongPasswordException.class, () -> {
+            User user = new User(VALID_LOGIN, tested, tested);
+        });
+    }
+
+    @Test
+    public void testEmptyPasswords() {
+        String tested = "";
+
+        assertThrows(WrongPasswordException.class, () -> {
+            User user = new User(VALID_LOGIN, tested, tested);
         });
     }
 
@@ -93,12 +158,6 @@ public class UserTest {
 //        });
 //    }
 //
-//    @Test
-//    public void testValidationLogin_InvalidLogin_Characters() {
-//        assertThrows(WrongLoginException.class, () -> {
-//            User user = new User("invalid$login");
-//        });
-//    }
 
 }
 
