@@ -4,6 +4,7 @@ import hillel.homework.lesson14.verificationLoginAndPassword.exception.WrongLogi
 import hillel.homework.lesson14.verificationLoginAndPassword.exception.WrongPasswordException;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class UserTest {
@@ -33,10 +34,13 @@ public class UserTest {
     }
 
     @Test
-    public void testLengthValidationPassword_LengthPassword() {
+    public void testLengthValidationPassword_ShortLengthPassword() {
         assertThrows(WrongPasswordException.class, () -> {
             User user = new User("short", "short");
         });
+    }
+
+    public void testLengthValidationPassword_LongLengthPassword() {
         assertThrows(WrongPasswordException.class, () -> {
             User user = new User("veryLongPassword123456789", "veryLongPassword123456789");
         });
@@ -73,6 +77,29 @@ public class UserTest {
             User user = new User("password123", "notmatching");
         });
     }
+
+
+//
+//    @Test
+//    public void testValidationLogin_equalsValidLogin() {
+//        User user = new User("validlogin");
+//        assertEquals("validlogin", user.getLogin());
+//    }
+//
+//    @Test
+//    public void testValidationLogin_InvalidLogin_Length() {
+//        assertThrows(WrongLoginException.class, () -> {
+//            User user = new User("thisisaverylongloginthatexceedstwentycharacters");
+//        });
+//    }
+//
+//    @Test
+//    public void testValidationLogin_InvalidLogin_Characters() {
+//        assertThrows(WrongLoginException.class, () -> {
+//            User user = new User("invalid$login");
+//        });
+//    }
+
 }
 
 
