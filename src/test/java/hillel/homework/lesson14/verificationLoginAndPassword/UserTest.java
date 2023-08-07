@@ -5,8 +5,7 @@ import hillel.homework.lesson14.verificationLoginAndPassword.exception.WrongPass
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
     private static final String VALID_PASSWORD = "password123";
@@ -80,7 +79,7 @@ public class UserTest {
 
     @Test
     public void testLongPassword() {
-        String tested = "veryLongPassword123456";
+        String tested = "veryLongPassword1234567890";
 
         /*WrongPasswordException message =*/
         assertThrows(WrongPasswordException.class, () -> {

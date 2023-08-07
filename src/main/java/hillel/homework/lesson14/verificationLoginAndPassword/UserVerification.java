@@ -16,11 +16,11 @@ public class UserVerification {
 
             try {
 //                System.out.println("Enter login: ");
-                String login = null;//scanner.nextLine();
+                String login = "qwerty";//scanner.nextLine();
 //                System.out.println("Enter password: ");
-                String password = "password123";//scanner.nextLine();
+                String password = "veryLongPassword12345";//scanner.nextLine();
 //                System.out.println("Enter confirm password: ");
-                String confirmPassword = "password123";//scanner.nextLine();
+                String confirmPassword = "veryLongPassword12345";//scanner.nextLine();
 
                 User user = new User(login, password, confirmPassword);
                 System.out.printf("Congratulations %s ! Your created successfully!\n\n", user.getLogin());
