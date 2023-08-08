@@ -21,45 +21,35 @@ public class UserTest {
     public void testLongLogin() {
         String tested = "thisLoginIsVeryLongAndShouldNotBeaLowed";
 
-        assertThrows(WrongLoginException.class, () -> {
-            User user = new User(tested, VALID_PASSWORD, VALID_CONFIG_PASSWORD);
-        });
+        assertThrows(WrongLoginException.class, () -> new User(tested, VALID_PASSWORD, VALID_CONFIG_PASSWORD));
     }
 
     @Test
     public void testNullLogin() {
         String tested = null;
 
-        assertThrows(WrongLoginException.class, () -> {
-            User user = new User(tested, VALID_PASSWORD, VALID_CONFIG_PASSWORD);
-        });
+        assertThrows(WrongLoginException.class, () -> new User(tested, VALID_PASSWORD, VALID_CONFIG_PASSWORD));
     }
 
     @Test
     public void testEmptyLogin() {
         String tested = "";
 
-        assertThrows(WrongLoginException.class, () -> {
-            User user = new User(tested, VALID_PASSWORD, VALID_CONFIG_PASSWORD);
-        });
+        assertThrows(WrongLoginException.class, () -> new User(tested, VALID_PASSWORD, VALID_CONFIG_PASSWORD));
     }
 
     @Test
     public void testDigitalLogin() {
         String tested = "username123";
 
-        assertThrows(WrongLoginException.class, () -> {
-            User user = new User(tested, VALID_PASSWORD, VALID_CONFIG_PASSWORD);
-        });
+        assertThrows(WrongLoginException.class, () -> new User(tested, VALID_PASSWORD, VALID_CONFIG_PASSWORD));
     }
 
     @Test
     public void testSymbolLogin() {
         String tested = "user$!?name";
 
-        assertThrows(WrongLoginException.class, () -> {
-            User user = new User(tested, VALID_PASSWORD, VALID_CONFIG_PASSWORD);
-        });
+        assertThrows(WrongLoginException.class, () -> new User(tested, VALID_PASSWORD, VALID_CONFIG_PASSWORD));
     }
 
 
@@ -72,43 +62,35 @@ public class UserTest {
     public void testShortPassword() {
         String tested = "short";
 
-        assertThrows(WrongPasswordException.class, () -> {
-            User user = new User(VALID_LOGIN, tested, tested);
-        });
+        assertThrows(WrongPasswordException.class, () -> new User(VALID_LOGIN, tested, tested));
     }
 
     @Test
     public void testLongPassword() {
         String tested = "veryLongPassword1234567890";
 
-        assertThrows(WrongPasswordException.class, () -> {
-            User user = new User(VALID_LOGIN, tested, tested);
-        });
+        assertThrows(WrongPasswordException.class, () -> new User(VALID_LOGIN, tested, tested));
     }
 
     @Test
     public void testNoLetterPassword() {
         String tested = "123456789";
 
-        assertThrows(WrongPasswordException.class, () -> {
-            User user = new User(VALID_LOGIN, tested, tested);
-        });
+        assertThrows(WrongPasswordException.class, () -> new User(VALID_LOGIN, tested, tested));
     }
 
     @Test
     public void testNoDigitPassword() {
         String tested = "password";
 
-        assertThrows(WrongPasswordException.class, () -> {
-            User user = new User(VALID_LOGIN, tested, tested);
-        });
+        assertThrows(WrongPasswordException.class, () -> new User(VALID_LOGIN, tested, tested));
     }
 
     @Test
     public void testEqualsPasswords() {
         String tested = "password123";
 
-        User user = new User(VALID_LOGIN, tested, tested);
+        new User(VALID_LOGIN, tested, tested);
     }
 
     @Test
@@ -116,27 +98,31 @@ public class UserTest {
         String password = "password123";
         String notEquals = "notEquals123";
 
-        assertThrows(WrongPasswordException.class, () -> {
-            User user = new User(VALID_LOGIN, password, notEquals);
-        });
+        assertThrows(WrongPasswordException.class, () -> new User(VALID_LOGIN, password, notEquals));
     }
 
     @Test
     public void testNullPasswords() {
         String tested = null;
 
-        Assertions.assertThrows(WrongPasswordException.class, () -> {
-            User user = new User(VALID_LOGIN, tested, tested);
-        });
+        Assertions.assertThrows(WrongPasswordException.class, () -> new User(VALID_LOGIN, tested, tested)
+        );
     }
 
     @Test
     public void testEmptyPasswords() {
         String tested = "";
 
-        assertThrows(WrongPasswordException.class, () -> {
-            User user = new User(VALID_LOGIN, tested, tested);
-        });
+        assertThrows(WrongPasswordException.class, () ->
+                new User(VALID_LOGIN, tested, tested));
+    }
+
+    @Test
+    public void testSymbolPassword() {
+        String tested = "password1233!?_-&^%$#@";
+
+        assertThrows(WrongPasswordException.class, () ->
+                new User(VALID_LOGIN, tested, tested));
     }
 }
 
