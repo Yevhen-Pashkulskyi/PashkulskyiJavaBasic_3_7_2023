@@ -43,7 +43,7 @@ public class User {
         }
     }
 
-    public boolean emptyAndNull(String str) {
+    private boolean emptyAndNull(String str) {
         return (str == null || str.equals(""));
     }
 
