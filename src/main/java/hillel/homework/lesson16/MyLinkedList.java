@@ -17,7 +17,7 @@ public class MyLinkedList implements MyList {
     @Override
     public boolean isEmpty() {
         // зробити самостійно
-        return false;
+        return size == 0;
     }
 
     @Override
@@ -81,6 +81,12 @@ public class MyLinkedList implements MyList {
     @Override
     public void set(int index, String value) {
         // зробити самостійно
+        validate(index);
+        Entry current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        current.value = value;
     }
 
     @Override
@@ -91,7 +97,18 @@ public class MyLinkedList implements MyList {
             return removeLast();
         } else {
             // зробити самостійно
-            return null;
+            validate(index);
+            Entry previous = null;
+            Entry current = head;
+            for (int i = 0; i < index; i++) {
+                previous = current;
+                current = current.next;
+            }
+
+            previous.next = current.next;
+            current.next = null;
+            size--;
+            return current.value;
         }
     }
 

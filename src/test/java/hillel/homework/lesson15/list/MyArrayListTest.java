@@ -340,7 +340,6 @@ class MyArrayListTest {
         for (int i = 0; i < expected.length; i++) {
             assertEquals(expected[i], list.get(i));
         }
-
     }
 
     private void fillList(int expectedSize) {

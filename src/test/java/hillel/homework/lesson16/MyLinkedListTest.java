@@ -2,7 +2,6 @@ package hillel.homework.lesson16;
 
 import hillel.homework.lesson15.list.MyList;
 import hillel.homework.lesson15.list.MyListException;
-//import org.junhomework.lesson15r.api.Assertions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -185,19 +184,29 @@ class MyLinkedListTest {
     @Test
     void addFirst() { // додати реалізацію
         // given
+        fillList(3);
+        String expected = "[first, value#1, value#2, value#3]";
 
         // when
+        list.addFirst("first");
 
         // then
+        assertEquals(4, list.size());
+        assertEquals(expected, list.toString());
     }
 
     @Test
     void addFirstToManyElements() { // додати реалізацію
         // given
+        fillList(20);
+        String expectedString = "[first, value#1, value#2, value#3, value#4, value#5, value#6, value#7, value#8, value#9, value#10, value#11, value#12, value#13, value#14, value#15, value#16, value#17, value#18, value#19, value#20]";
 
         // when
+        list.addFirst("first");
 
         // then
+        assertEquals(21, list.size());
+        assertEquals(expectedString, list.toString());
     }
 
     @Test
@@ -251,11 +260,16 @@ class MyLinkedListTest {
 
     @Test
     void addManyElements() { // додати реалізацію
-        // given
+        fillList(4);
+        String[] expected = {"value#1", "second", "value#2", "value#3", "value#4"};
 
         // when
-
+        list.add(1, "second");
         // then
+        assertEquals(expected.length, list.size());
+        for (int i = 0; i < expected.length; i++) {
+            assertEquals(expected[i], list.get(i));
+        }
     }
 
     @Test
@@ -310,11 +324,18 @@ class MyLinkedListTest {
     @Test
     void remove() { // додати реалізацію
         // given
+        fillList(5);
+        String[] expected = {"value#2", "value#3", "value#4", "value#5"};
 
         // when
+        String removeElements = list.remove(0);
 
         // then
-
+        assertEquals("value#1", removeElements);
+        assertEquals(4, list.size());
+        for (int i = 0; i < expected.length; i++) {
+            assertEquals(expected[i], list.get(i));
+        }
     }
 
     private void fillList(int expectedSize) {
